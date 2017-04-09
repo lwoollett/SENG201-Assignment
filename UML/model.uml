@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_JWWMIBs4Eeed_Yge8zWcMQ" name="AssignmentModels">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Sjl-0Bs4Eeed_Yge8zWcMQ" name="Food">
+    <ownedAttribute xmi:id="_aSbSwBs4Eeed_Yge8zWcMQ" name="Price" visibility="private"/>
+    <ownedAttribute xmi:id="_hEwiMBs4Eeed_Yge8zWcMQ" name="Nutrition" visibility="private"/>
+    <ownedAttribute xmi:id="_nQYW8Bs4Eeed_Yge8zWcMQ" name="Tastiness" visibility="private"/>
+    <ownedAttribute xmi:id="_ph2DQBs4Eeed_Yge8zWcMQ" name="Name" visibility="private"/>
+    <ownedAttribute xmi:id="_qve7EBs4Eeed_Yge8zWcMQ" name="Image" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3vhp8Bs4Eeed_Yge8zWcMQ" name="Player">
+    <ownedAttribute xmi:id="_5zr6EBs4Eeed_Yge8zWcMQ" name="Name" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5zshIBs4Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5zshIRs4Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_B9wYgBs5Eeed_Yge8zWcMQ" name="petList" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B9w_kBs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B9w_kRs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_EoFQwBs5Eeed_Yge8zWcMQ" name="toyList" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EoF30Bs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EoF30Rs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JXzIMBs5Eeed_Yge8zWcMQ" name="accountBalance" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JXzIMRs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JXzvQBs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WEKGEBs5Eeed_Yge8zWcMQ" name="Toy">
+    <ownedAttribute xmi:id="_2bINYBs5Eeed_Yge8zWcMQ" name="Name" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2bINYRs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2bINYhs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_3Nv9IBs5Eeed_Yge8zWcMQ" name="Price" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3Nv9IRs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3Nv9Ihs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_3eV94Bs5Eeed_Yge8zWcMQ" name="happiness" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3eWk8Bs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3eWk8Rs5Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_340TYBs5Eeed_Yge8zWcMQ" name="damage" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_340TYRs5Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_340TYhs5Eeed_Yge8zWcMQ" value="100"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_FnMu8Bs6Eeed_Yge8zWcMQ" name="def" value="100"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QHTQoBs6Eeed_Yge8zWcMQ" name="Pet">
+    <ownedAttribute xmi:id="_uz_AYBs6Eeed_Yge8zWcMQ" name="Species" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uz_ncBs6Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uz_ncRs6Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_-GfhIBs6Eeed_Yge8zWcMQ" name="name" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-GfhIRs6Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-GgIMBs6Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Adt3MBs7Eeed_Yge8zWcMQ" name="hunger" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AdueQBs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AdueQRs7Eeed_Yge8zWcMQ" value="100"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_FK27wBs7Eeed_Yge8zWcMQ" name="tiredness" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FK3i0Bs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FK3i0Rs7Eeed_Yge8zWcMQ" value="100"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_H0M8kBs7Eeed_Yge8zWcMQ" name="mood" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H0M8kRs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H0M8khs7Eeed_Yge8zWcMQ" value="100"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_KMhe0Bs7Eeed_Yge8zWcMQ" name="health" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KMhe0Rs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KMiF4Bs7Eeed_Yge8zWcMQ" value="100"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_NCJoIBs7Eeed_Yge8zWcMQ" name="isAlive" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NCJoIRs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NCJoIhs7Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_RlZw4Bs7Eeed_Yge8zWcMQ" name="toiletNeed" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RlZw4Rs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RlaX8Bs7Eeed_Yge8zWcMQ" value="100"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_XY5ZgBs7Eeed_Yge8zWcMQ" name="weight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XY5ZgRs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XY6AkBs7Eeed_Yge8zWcMQ" value="200"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iF5uwBs7Eeed_Yge8zWcMQ" name="Horse">
+    <ownedAttribute xmi:id="_0iXqEBs7Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0iXqERs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0iYRIBs7Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_3dewUBs7Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3dewURs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3dewUhs7Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_8WzPsBs7Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8WzPsRs7Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8WzPshs7Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_AJJf8Bs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AJKHABs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AJKHARs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_sXt80Bs7Eeed_Yge8zWcMQ" client="_iF5uwBs7Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Dzx-oBs8Eeed_Yge8zWcMQ" name="Dog">
+    <ownedAttribute xmi:id="_Dzx-oRs8Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Dzx-ohs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dzx-oxs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Dzx-pBs8Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Dzx-pRs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dzx-phs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Dzx-pxs8Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Dzx-qBs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dzx-qRs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Dzx-qhs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Dzx-qxs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dzx-rBs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JW1XgBs8Eeed_Yge8zWcMQ" name="Cat">
+    <ownedAttribute xmi:id="_JW1XgRs8Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JW1Xghs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JW1Xgxs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JW1XhBs8Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JW1XhRs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JW1Xhhs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JW1Xhxs8Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JW1XiBs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JW1XiRs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JW1Xihs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JW1Xixs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JW1XjBs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_KohB0Bs8Eeed_Yge8zWcMQ" client="_Dzx-oBs8Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_MFU-EBs8Eeed_Yge8zWcMQ" client="_JW1XgBs8Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_PZVFcBs8Eeed_Yge8zWcMQ" client="_PZdBQBs8Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_PZWTkBs8Eeed_Yge8zWcMQ" client="_PZk9EBs8Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_PZW6oBs8Eeed_Yge8zWcMQ" client="_PZW6oRs8Eeed_Yge8zWcMQ" supplier="_QHTQoBs6Eeed_Yge8zWcMQ">
+    <name xsi:nil="true"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PZW6oRs8Eeed_Yge8zWcMQ" name="Mouse">
+    <ownedAttribute xmi:id="_PZW6ohs8Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZW6oxs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZW6pBs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZW6pRs8Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZW6phs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZW6pxs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZW6qBs8Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZW6qRs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZW6qhs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZW6qxs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZW6rBs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZW6rRs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PZdBQBs8Eeed_Yge8zWcMQ" name="Rabbit">
+    <ownedAttribute xmi:id="_PZdBQRs8Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZdBQhs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZdBQxs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZdBRBs8Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZdBRRs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZdBRhs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZdBRxs8Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZdBSBs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZdBSRs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZdBShs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZdBSxs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZdBTBs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PZk9EBs8Eeed_Yge8zWcMQ" name="Dinosaur">
+    <ownedAttribute xmi:id="_PZk9ERs8Eeed_Yge8zWcMQ" name="hungerWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZk9Ehs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZk9Exs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZk9FBs8Eeed_Yge8zWcMQ" name="sleepWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZk9FRs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZk9Fhs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZk9Fxs8Eeed_Yge8zWcMQ" name="toyWeight" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZk9GBs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZk9GRs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PZk9Ghs8Eeed_Yge8zWcMQ" name="favToy" visibility="private">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PZk9Gxs8Eeed_Yge8zWcMQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PZk9HBs8Eeed_Yge8zWcMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>

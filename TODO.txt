@@ -1,0 +1,7 @@
+UML:
+Do Other Diagrams.
+Decide if other toys / pets / foods need their own uml diagrams or if the generalised one is enough,
+and write their variables into the code. 
+
+JAVA:
+Start it?
