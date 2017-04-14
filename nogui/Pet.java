@@ -1,14 +1,18 @@
 package nogui;
 
+
+//SCORE = score * sum(points per attribute)
+//Break pets up into many subclasses.
+//Kill a small child.
+//Sacra
 public class Pet {
 	//Normal Vars
-	private String pettype;
+	private String pettype; //TODO Make functions for each pet type changing vars.	
 	private String petname;
 	private int hunger; //0-100
 	private int tiredness; //0-100
 	private int mood; //1-3? Idk Fammmmmmm
 	private boolean alive = true;
-	public int xd;
 	private int toiletneed;
 	private int weight;
 	//Vars That Differ By Species
