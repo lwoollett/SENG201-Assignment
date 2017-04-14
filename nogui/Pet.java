@@ -8,6 +8,7 @@ public class Pet {
 	private int tiredness; //0-100
 	private int mood; //1-3? Idk Fammmmmmm
 	private boolean alive = true;
+	public int xd;
 	private int toiletneed;
 	private int weight;
 	//Vars That Differ By Species
