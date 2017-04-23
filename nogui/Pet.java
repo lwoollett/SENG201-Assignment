@@ -2,30 +2,67 @@ package nogui;
 
 public class Pet {
 	//Normal Vars
-	private String pettype;
 	private String petname;
 	private int hunger; //0-100
 	private int tiredness; //0-100
-	private int mood; //1-3? Idk Fammmmmmm
+	private int mood; //1-4? Idk Fammmmmmm
 	private boolean alive = true;
-	public int xd;
-	private int toiletneed;
-	private int weight;
-	//Vars That Differ By Species
-	private int sleepweight;
-	private int hungerweight;
-	private int toyweight;
-	private String favtoy;
+	private int toiletneed; //1-100
+	private int weight; //ddwdwdawdawd
 	
-	public Pet(String name, String type){
-		pettype = type;
+	
+
+	//Vars That Differ By Species
+	private int sleepiness;
+	private double hungerNeed;
+	private int roughness;
+	private String favtoy;
+	private String favfood;
+	
+	public Pet(String name){
 		petname = name;
+		hunger = 100;
+		tiredness = 100;
+		mood = 4;
+		toiletneed = 100;
+		weight = 50;
 	}
-
-	public String getPettype() {
-		return pettype;
+	
+	public static void calcmood(){
+		//TODO Impliment Method
 	}
-
+	
+	public void feed(Food food){
+		double io = food.getNutrion() * hungerNeed;
+		hunger += io;
+		if(hunger > 100){
+			hunger = 100;
+		}
+		toiletneed -= food.getMeal() * 10;
+	}
+	
+	public void play(Toy toy){
+		mood += toy.getHappiness() / 10;
+	}
+	
+	public void sleep(){
+		tiredness = 100;
+	}
+	
+	public void goToToilet(){
+		toiletneed = 100;
+	}
+	
+	public void nextDay(){
+		hunger -= 20;
+		tiredness -= 20;
+		toiletneed -= 20;
+		
+	}
+	
+	/*
+	 * Getters And Setters
+	 */
 	public String getPetname() {
 		return petname;
 	}
@@ -78,32 +115,48 @@ public class Pet {
 		this.weight = weight;
 	}
 
-	public int getSleepweight() {
-		return sleepweight;
+	public int getSleepiness() {
+		return sleepiness;
 	}
 
-	public void setSleepweight(int sleepweight) {
-		this.sleepweight = sleepweight;
-	}
-
-	public int getHungerweight() {
-		return hungerweight;
-	}
-
-	public void setHungerweight(int hungerweight) {
-		this.hungerweight = hungerweight;
-	}
-
-	public int getToyweight() {
-		return toyweight;
-	}
-
-	public void setToyweight(int toyweight) {
-		this.toyweight = toyweight;
+	public double getHungerweight() {
+		return hungerNeed;
 	}
 
 	public String getFavtoy() {
 		return favtoy;
+	}
+	
+	public double getHungerNeed() {
+		return hungerNeed;
+	}
+
+	public void setHungerNeed(double hungerNeed) {
+		this.hungerNeed = hungerNeed;
+	}
+
+	public int getRoughness() {
+		return roughness;
+	}
+
+	public void setRoughness(int roughness) {
+		this.roughness = roughness;
+	}
+
+	public String getFavfood() {
+		return favfood;
+	}
+
+	public void setFavfood(String favfood) {
+		this.favfood = favfood;
+	}
+
+	public void setPetname(String petname) {
+		this.petname = petname;
+	}
+
+	public void setSleepiness(int sleepiness) {
+		this.sleepiness = sleepiness;
 	}
 
 	public void setFavtoy(String favtoy) {

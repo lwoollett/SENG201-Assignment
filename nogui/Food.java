@@ -9,11 +9,11 @@ public class Food {
 	
 	//Constructor
 	public Food(String foodName, int val, int nutri, int taste, int size){
-		name = foodName;
-		value = val;
-		nutrition = nutri;
-		tastiness = taste;
-		mealsize = size;
+		this.name = foodName;
+		this.value = val;
+		this.nutrition = nutri;
+		this.tastiness = taste;
+		this.mealsize = size;
 	}
 	
 	//Getters

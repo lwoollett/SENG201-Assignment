@@ -14,6 +14,7 @@ public class Player {
 	private String name;
 	private int money = 1000; //TODO Add a actual variable with reasoning.
 	private int score = 0;
+	private int actions = 2;
 	private ArrayList<Pet> pets = new ArrayList<Pet>();
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
 	private ArrayList<Food> food = new ArrayList<Food>();
@@ -22,6 +23,12 @@ public class Player {
 		name = n;
 	}
 	
+	public void nextDay(){
+		actions = 2;
+		for(Pet p: pets){
+			p.nextDay();
+		}
+	}
 	public String getName(){
 		return name;
 	}
