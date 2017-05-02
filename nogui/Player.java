@@ -25,10 +25,11 @@ public class Player {
 	
 	public void nextDay(){
 		actions = 2;
-		for(Pet p: pets){
-			p.nextDay();
+		for(Pet pet: pets){
+			pet.nextDay();
 		}
 	}
+	
 	public String getName(){
 		return name;
 	}
@@ -43,6 +44,10 @@ public class Player {
 	
 	public ArrayList<Pet> getPets(){
 		return pets;
+	}
+	
+	public void setPets(ArrayList<Pet> p){
+		pets = p;
 	}
 	
 	public ArrayList<Toy> getToys(){

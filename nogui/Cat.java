@@ -1,7 +1,6 @@
 package nogui;
 
 public class Cat extends Pet{
-
 	public Cat(String name) {
 		super(name);
 		super.setHungerNeed(3.00);

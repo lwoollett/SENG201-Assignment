@@ -54,10 +54,9 @@ public class Pet {
 	}
 	
 	public void nextDay(){
-		hunger -= 20;
-		tiredness -= 20;
+		hunger -= 5 * hungerNeed;
+		tiredness -= 5 * sleepiness;
 		toiletneed -= 20;
-		
 	}
 	
 	/*
@@ -66,7 +65,7 @@ public class Pet {
 	public String getPetname() {
 		return petname;
 	}
-
+	
 	public int getHunger() {
 		return hunger;
 	}
