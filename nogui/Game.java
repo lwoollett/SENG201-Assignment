@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Game {
 	Scanner sc = new Scanner(System.in);
 	int pnum = 0;
-	ArrayList<Player> players = new ArrayList<Player>();
+	static ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 	
 	private void populatepets(){
@@ -34,7 +34,6 @@ public class Game {
 	}
 	
 	private void getPlayers() {
-		System.out.println("Game Started");
 		System.out.println("How Many Players: ");
 		pnum = getNumber(1, 3);
 		
@@ -72,7 +71,7 @@ public class Game {
 				for(Pet option : pets){
 					System.out.println(c + ". " + option.getClass().getSimpleName() + ".");
 					c++;
-				}
+				} 
 				System.out.println("Please Choose Your Pet With A Number:");
 				int selected = getNumber(1, 6);
 				Pet selectedpet = pets.get(selected - 1);
@@ -86,12 +85,74 @@ public class Game {
 		}
 	}
 	
+	private void dayLoop(Player p){
+		//TODO
+		/*
+		 * So a day should have a few options
+		 * 1. Play with a pet
+		 * 2. Feed a pet
+		 * 3. Go to the store to buy toys / food
+		 * 4. End the day early
+		 * Make sure to tell the player how many actions they have left in the day
+		 * 
+		 */
+		System.out.println("*******************");
+		System.out.println("It is now " + p.getName() + "'s turn on this day.");
+		
+		while(p.getActions() > 0){
+				System.out.println("Choose what you're going to do with the day.");
+				System.out.println(p.getName() + " has " + p.getActions() + " actions left for the day.");
+				System.out.println("1. Play with a pet.");
+				System.out.println("2. Feed a pet.");
+				System.out.println("3. Go to the store.");
+				System.out.println("4. Print out pet status.");
+				System.out.println("5. End the day early.");
+				int selected = getNumber(1,5);
+				switch(selected){
+				case 1:
+					System.out.println("What pet would you like to play with?");
+					
+					int c = 1;
+					for(Pet pet : p.getPets()){
+						System.out.println(c + ". " + pet.getPetname());
+						c++;
+					}
+					int selectedpetindex = getNumber(1, p.getPets().size());
+					Pet selectedpet = p.getPets().get(selectedpetindex - 1);
+					System.out.println(selectedpet.getPetname());
+					break;
+				case 2:
+					//Code for feeding a pet
+					break;
+				case 3:
+					//Code for the store
+					break;
+				case 4:
+					//Code for printing pets status
+					break;
+				case 5:
+					//Code for ending the day early
+					break;
+				default:
+					System.out.println("Fatal Error.");
+				}
+		}
+	}
+	
 	public static void main(String[] args){
+		System.out.println("Game Started");
 		Game game = new Game();
+		System.out.println("How Many Days Is The Game Gonna last?");
+		int gamedays = game.getNumber(1, 31); //31 is just a random number, could be anything really.
 		game.populatepets();
 		game.getPlayers();
 		game.getPets();
 		
+		for(int day=0; day < gamedays; day++){
+			for(Player p : players){
+				game.dayLoop(p);
+			}
+			System.out.println("Day " + day + " over.");
+		}
 	}
-	
 }

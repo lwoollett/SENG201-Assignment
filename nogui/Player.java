@@ -57,4 +57,19 @@ public class Player {
 	public ArrayList<Food> getFood(){
 		return food;
 	}
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getActions() {
+		return actions;
+	}
+
+	public void setActions(int actions) {
+		this.actions = actions;
+	}
 }
