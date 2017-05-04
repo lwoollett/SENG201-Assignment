@@ -9,7 +9,7 @@ public class Toy {
 	public Toy(String name, int price, int happiness){
 		this.name = name;
 		this.price = price;
-		this.happiness = happiness;
+		this.happiness = happiness; //Needs to be between 0-40 40 is like, giving a puppy to your girlfriend. 
 		this.durability = 100;
 	}
 	public String getName() {

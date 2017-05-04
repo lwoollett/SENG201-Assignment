@@ -28,8 +28,23 @@ public class Pet {
 		weight = 50;
 	}
 	
-	public static void calcmood(){
-		//TODO Impliment Method
+	public void printStatus(){
+		System.out.println("_____________________________________________");
+		System.out.println("||STATUS FOR " + petname.toUpperCase() + " ||");
+		System.out.println("Hunger: " + hunger);
+		System.out.println("Tiredness: " + tiredness);
+		System.out.println("Mood: " + mood);
+		System.out.println("Alive: " + alive);
+		System.out.println("Toilet Need: " + toiletneed);
+		System.out.println("Weight: " + weight);
+		System.out.println("_____________________________________________");
+		System.out.println("**Species Dependent Things**");
+		System.out.println("Sleepiness: " + sleepiness);
+		System.out.println("Need For Food: " + hungerNeed);
+		System.out.println("Roughness: " + roughness);
+		System.out.println("Favourite Toy: " + favtoy);
+		System.out.println("Favourite Food: " + favfood);
+		System.out.println("_____________________________________________");
 	}
 	
 	public void feed(Food food){

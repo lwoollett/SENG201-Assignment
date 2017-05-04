@@ -54,9 +54,18 @@ public class Player {
 		return toys;
 	}
 	
+	public void setToys(ArrayList<Toy> t){
+		this.toys = t;
+	}
+	
 	public ArrayList<Food> getFood(){
 		return food;
 	}
+	
+	public void setFood(ArrayList<Food> f){
+		this.food = f;
+	}
+	
 	public int getScore() {
 		return score;
 	}
@@ -71,5 +80,13 @@ public class Player {
 
 	public void setActions(int actions) {
 		this.actions = actions;
+	}
+
+	public void addFood(Food f) {
+		this.food.add(f);
+	}
+	
+	public void addToy(Toy t) {
+		this.toys.add(t);
 	}
 }

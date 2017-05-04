@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Store{
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
 	private ArrayList<Food> foods = new ArrayList<Food>();
-	private int[] foodamounts = {2, 2, 2, 2, 2, 2};
+	private int[] foodamounts = {69, 69, 999999, 1, 12, 4};
 	private int[] toyamounts = {1, 1, 1, 1, 1, 1};
 	/*
 	 * Food Names
