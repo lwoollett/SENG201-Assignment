@@ -1,8 +1,10 @@
 package nogui;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Store{
+	private Random rand = new Random();
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
 	private ArrayList<Food> foods = new ArrayList<Food>();
 	private int[] foodamounts = {69, 69, 999999, 1, 12, 4};
@@ -33,6 +35,7 @@ public class Store{
 	}
 	
 	public int[] getToyamounts() {
+	
 		return toyamounts;
 	}
 	
@@ -50,5 +53,16 @@ public class Store{
 	
 	public void setFoodamounts(int[] foodamounts) {
 		this.foodamounts = foodamounts;
+	}
+
+	public void nextDay() {
+		for(int i=0; i < foodamounts.length; i++){
+			int r = rand.nextInt(2);
+			foodamounts[i] += r;
+		}
+		for(int m=0; m < foodamounts.length; m++){
+			int r = rand.nextInt(2);
+			foodamounts[m] += r;
+		}
 	}
 }

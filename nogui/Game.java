@@ -208,24 +208,20 @@ public class Game {
 		}
 		}
 	
+	private void endDay(Player p){
+		p.setActions(2);
+		ArrayList<Pet> pets = p.getPets();
+		for(Pet pet : pets){
+			pet.nextDay();
+		}
+		store.nextDay();
+	}
+	
 	private void dayLoop(Player p){
-		//TODO
-		/*
-		 * So a day should have a few options
-		 * 1. Play with a pet
-		 * 2. Feed a pet
-		 * 3. Go to the store to buy toys / food
-		 * 4. End the day early
-		 * Make sure to tell the player how many actions they have left in the day
-		 * 
-		 */
+		//Loop for every day. 
 		System.out.println("*******************");
 		System.out.println("It is now " + p.getName() + "'s turn on this day.");
-		
 		while(p.getActions() > 0){
-				int c = 1; //This is our selection counter, we reset it when we need to count through shit.
-				int selectedpetindex;
-				Pet selectedpet;
 				System.out.println("Choose what you're going to do with the day.");
 				System.out.println(p.getName() + " has " + p.getActions() + " actions left for the day.");
 				System.out.println("1. Play with a pet.");
@@ -249,18 +245,24 @@ public class Game {
 				case 3:
 					storeTrip(p);
 					break;
+				//Print Pet Status
 				case 4:
 					for(Pet pet : p.getPets()){
 						pet.printStatus();
 					}
 					break;
+				//Print Player inventory.
 				case 5:
-					//I dunno fam, do some shit that does magic and stuff. 
+					p.printInventory();
+				//Finish the day early.
+				case 6:
+					p.setActions(0);
 					break;
 				default:
 					System.out.println("Fatal Error.");
 				}
 		}
+		endDay(p);
 	}
 	
 	public static void main(String[] args){
@@ -272,7 +274,7 @@ public class Game {
 		game.getPlayers();
 		game.getPets();
 		
-		for(int day=0; day < gamedays; day++){
+		for(int day=1; day < gamedays + 1; day++){
 			for(Player p : players){
 				game.dayLoop(p);
 			}

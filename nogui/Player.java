@@ -30,6 +30,18 @@ public class Player {
 		}
 	}
 	
+	public void printInventory() {
+		System.out.println("Toys:");
+		for(Toy t : toys){
+			System.out.println(t.getName() + " has " + t.getDurability() + " durability left.");
+			
+		}
+		System.out.println("Food:");
+		for(Food f : food){
+			System.out.println(f.getName() + " nutrition: " + f.getNutrion());
+		}
+	}
+	
 	public String getName(){
 		return name;
 	}
