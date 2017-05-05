@@ -30,6 +30,18 @@ public class Player {
 		}
 	}
 	
+	public void printInventory() {
+		System.out.println("Toys:");
+		for(Toy t : toys){
+			System.out.println(t.getName() + " has " + t.getDurability() + " durability left.");
+			
+		}
+		System.out.println("Food:");
+		for(Food f : food){
+			System.out.println(f.getName() + " nutrition: " + f.getNutrion());
+		}
+	}
+	
 	public String getName(){
 		return name;
 	}
@@ -54,7 +66,39 @@ public class Player {
 		return toys;
 	}
 	
+	public void setToys(ArrayList<Toy> t){
+		this.toys = t;
+	}
+	
 	public ArrayList<Food> getFood(){
 		return food;
+	}
+	
+	public void setFood(ArrayList<Food> f){
+		this.food = f;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getActions() {
+		return actions;
+	}
+
+	public void setActions(int actions) {
+		this.actions = actions;
+	}
+
+	public void addFood(Food f) {
+		this.food.add(f);
+	}
+	
+	public void addToy(Toy t) {
+		this.toys.add(t);
 	}
 }
