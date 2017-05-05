@@ -1,4 +1,4 @@
-package nogui;
+package gui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
