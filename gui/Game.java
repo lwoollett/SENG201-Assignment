@@ -251,7 +251,7 @@ public class Game {
 				//Print Pet Status
 				case 4:
 					for(Pet pet : p.getPets()){
-						pet.printStatus();
+						System.out.println(pet.printStatus());
 					}
 					break;
 				//Print Player inventory.
