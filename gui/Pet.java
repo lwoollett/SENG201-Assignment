@@ -59,7 +59,7 @@ public class Pet {
 		hunger -= 5 * hungerNeed;
 		tiredness -= 5 * sleepiness;
 		toiletneed -= 20;
-	}
+	}		public String toString(){		String a = "";		return a;	}
 	/*
 	 * Getters And Setters
 	 */

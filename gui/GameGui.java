@@ -6,19 +6,24 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 
 public class GameGUI {
-	Store store = new Store();
+	public static Store store = new Store();
 	int pnum = 0;
-	static ArrayList<Player> players = new ArrayList<Player>();
+	int day = 1;
+	public static int pcounter = 0;
+	public static ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
 	private void populatepets(){
@@ -62,8 +67,7 @@ public class GameGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void playgame() {
-		int day = 1;
-		int pcounter = 0;
+
 		frmVirtualPets = new JFrame();
 		frmVirtualPets.setTitle("Virtual Pets");
 		frmVirtualPets.setBounds(100, 100, 653, 549);
@@ -116,7 +120,7 @@ public class GameGUI {
 						petobjects[0]);
 
 
-				System.out.println(retPet);
+				//System.out.println(retPet);
 				val = petstrings.indexOf(retPet);
 				ArrayList<Pet> ppets = players.get(i-1).getPets();
 				if(val == -1 && players.get(i-1).getPets().size() == 0){
@@ -167,59 +171,17 @@ public class GameGUI {
 		inventory_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		frmVirtualPets.getContentPane().add(inventory_panel);
 
+
+		//Text Panes and shit.
+		//Pretty much the displays for everything
 		JTextPane pet1_text = new JTextPane();
 		pet1_panel.add(pet1_text);
-
 
 		JTextPane pet2_text = new JTextPane();
 		pet2_panel.add(pet2_text);
 
-
 		JTextPane pet3_text = new JTextPane();
 		pet3_panel.add(pet3_text);
-
-
-		JButton btnHomeScreen = new JButton("Home Screen");
-		btnHomeScreen.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				System.out.println("Clicked!");
-				inventory_panel.setVisible(true);
-				pet1_panel.setVisible(true);
-				pet2_panel.setVisible(true);
-				pet3_panel.setVisible(true);
-
-			}
-		});
-
-		nav_panel.add(btnHomeScreen);
-
-		JButton btnFeed = new JButton("Feed");
-		nav_panel.add(btnFeed);
-
-		JButton btnStore = new JButton("Store");
-		btnStore.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				inventory_panel.setVisible(false);
-				pet1_panel.setVisible(false);
-				pet2_panel.setVisible(false);
-				pet3_panel.setVisible(false);
-				action_panel.setVisible(true);
-			}
-		});
-		nav_panel.add(btnStore);
-
-		JButton btnPlay = new JButton("Play");
-		nav_panel.add(btnPlay);
-
-		JButton btnHelp = new JButton("Help");
-		nav_panel.add(btnHelp);
-
-		JButton btnEndDay = new JButton("End Day");
-		nav_panel.add(btnEndDay);
-
-
 
 		JLabel lblPlayerName = new JLabel("Player Name");
 		status_panel.add(lblPlayerName);
@@ -244,6 +206,147 @@ public class GameGUI {
 		inventory_panel.add(list_food);
 
 
+		JButton btnHomeScreen = new JButton("Home Screen");
+		btnHomeScreen.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				System.out.println("Clicked!");
+				inventory_panel.setVisible(true);
+				pet1_panel.setVisible(true);
+				pet2_panel.setVisible(true);
+				pet3_panel.setVisible(true);
+				Player player = players.get(pcounter);
+				lblPlayerName.setText("Player: " + player.getName());
+				lblPlayerMoney.setText("$: " + player.getMoney());
+				lblPlayerScore.setText("Score: " + player.getScore());
+				lblActionsLeftFor.setText("Actions Left: " + player.getActions());
+				lblDaysPassed.setText("Day: " + day);
+
+				pet1_text.setText(player.getPets().get(0).printStatus());
+				try{
+					pet2_text.setText(player.getPets().get(1).printStatus());
+				}catch(IndexOutOfBoundsException e){
+					//System.out.println("Only 1 Pet");
+				}
+				finally{
+					//Dont really need anything here.
+				}
+				try{
+					pet3_text.setText(player.getPets().get(2).printStatus());
+				}catch(IndexOutOfBoundsException e){
+					//System.out.println("Only 2 Pets");
+				}finally{
+					//Again, we dont need to do anything here
+				}
+
+
+			}
+		});
+
+		nav_panel.add(btnHomeScreen);
+
+		JButton btnFeed = new JButton("Feed");
+		btnFeed.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				if(players.get(pcounter).getFood().size() == 0){
+					//TODO Add a dialouge box that has a error message
+					System.out.println("Player Has No Food");
+				}else{
+					ArrayList<Pet> pets = players.get(pcounter).getPets();
+
+					JComboBox<Pet> selectedPet = new JComboBox<Pet>();
+					for(Pet p:players.get(pcounter).getPets()){
+						selectedPet.addItem(p);
+					}
+					JComboBox<Food> selectedFood = new JComboBox<Food>();
+					for(Food f:players.get(pcounter).getFood()){
+						selectedFood.addItem(f);
+					}
+					final JComponent[] things = new JComponent[] {
+							new JLabel("Pet To Feed"),
+							selectedPet,
+							new JLabel("Food To Use"),
+							selectedFood
+					};
+
+					int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+					if (result == JOptionPane.OK_OPTION) {
+						System.out.println("You entered " +
+								selectedPet.getSelectedItem().toString() + ", " +
+								selectedFood.getSelectedItem().toString());
+					} else {
+						System.out.println("User canceled / closed the dialog, result = " + result);
+					}
+				}
+			}
+		});
+		nav_panel.add(btnFeed);
+
+		JButton btnFoodStore = new JButton("Food Store");
+		btnFoodStore.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				ArrayList<Food> foods = store.getFoods();
+				int c = 0;
+				JComboBox<String> selectedFood = new JComboBox<String>();
+				for(Food f: foods){
+					selectedFood.addItem(f.getName() + ": " + store.getFoodamounts()[c]);
+					c++;
+				}
+				final JComponent[] things = new JComponent[] {
+						new JLabel("Food To Buy:"),
+						selectedFood};
+
+				int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+				if (result == JOptionPane.OK_OPTION) {
+					System.out.println("You entered " +	selectedFood.getSelectedItem().toString());
+				} else {
+					System.out.println("User canceled / closed the dialog, result = " + result);
+				}
+			}
+		});
+
+		nav_panel.add(btnFoodStore);
+
+		JButton btnToyStore = new JButton("Toy Store");
+		btnToyStore.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				ArrayList<Toy> toys = store.getToys();
+				JComboBox<String> selectedToy = new JComboBox<String>();
+				int c = 0;
+				for(Toy t : toys){
+					selectedToy.addItem(t.getName() + ": " + store.getToyamounts()[c]);
+					c++;
+				}
+				final JComponent[] things = new JComponent[] {
+						new JLabel("Toy To Buy:"),
+						selectedToy};
+
+				int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+				if (result == JOptionPane.OK_OPTION) {
+					System.out.println("You entered " + selectedToy.getSelectedItem().toString());
+				} else {
+					System.out.println("User canceled / closed the dialog, result = " + result);
+				}
+			}
+		});
+		nav_panel.add(btnToyStore);
+
+		JButton btnPlay = new JButton("Play");
+		nav_panel.add(btnPlay);
+
+		JButton btnHelp = new JButton("Help");
+		btnHelp.setHorizontalAlignment(SwingConstants.LEFT);
+		nav_panel.add(btnHelp);
+
+		JButton btnEndDay = new JButton("End Day");
+		btnEndDay.setHorizontalAlignment(SwingConstants.LEFT);
+		nav_panel.add(btnEndDay);
+
+
+
 		Player player = players.get(pcounter);
 		lblPlayerName.setText("Player: " + player.getName());
 		lblPlayerMoney.setText("$: " + player.getMoney());
@@ -254,13 +357,20 @@ public class GameGUI {
 		pet1_text.setText(player.getPets().get(0).printStatus());
 		try{
 			pet2_text.setText(player.getPets().get(1).printStatus());
-		}finally{
+		}catch(IndexOutOfBoundsException e){
+			//System.out.println("Only 1 Pet");
+		}
+		finally{
 			//Dont really need anything here.
 		}
 		try{
 			pet3_text.setText(player.getPets().get(2).printStatus());
+		}catch(IndexOutOfBoundsException e){
+			//System.out.println("2 Or Less Pets");
 		}finally{
 			//Again, we dont need to do anything here
 		}
+
+
 	}
 }
