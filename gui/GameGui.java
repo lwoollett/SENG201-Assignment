@@ -22,6 +22,7 @@ public class GameGUI {
 	public static Store store = new Store();
 	int pnum = 0;
 	int day = 1;
+	Player currplayer;
 	public static int pcounter = 0;
 	public static ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Pet> pets = new ArrayList<Pet>();
@@ -215,11 +216,11 @@ public class GameGUI {
 				pet1_panel.setVisible(true);
 				pet2_panel.setVisible(true);
 				pet3_panel.setVisible(true);
-				Player player = players.get(pcounter);
-				lblPlayerName.setText("Player: " + player.getName());
-				lblPlayerMoney.setText("$: " + player.getMoney());
-				lblPlayerScore.setText("Score: " + player.getScore());
-				lblActionsLeftFor.setText("Actions Left: " + player.getActions());
+				Player player = currplayer;
+				lblPlayerName.setText("Player: " + currplayer.getName());
+				lblPlayerMoney.setText("$: " + currplayer.getMoney());
+				lblPlayerScore.setText("Score: " + currplayer.getScore());
+				lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 				lblDaysPassed.setText("Day: " + day);
 
 				pet1_text.setText(player.getPets().get(0).printStatus());
@@ -249,18 +250,18 @@ public class GameGUI {
 		btnFeed.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if(players.get(pcounter).getFood().size() == 0){
+				if(currplayer.getFood().size() == 0){
 					//TODO Add a dialouge box that has a error message
 					System.out.println("Player Has No Food");
 				}else{
-					ArrayList<Pet> pets = players.get(pcounter).getPets();
+					ArrayList<Pet> pets = currplayer.getPets();
 
 					JComboBox<Pet> selectedPet = new JComboBox<Pet>();
-					for(Pet p:players.get(pcounter).getPets()){
+					for(Pet p:currplayer.getPets()){
 						selectedPet.addItem(p);
 					}
 					JComboBox<Food> selectedFood = new JComboBox<Food>();
-					for(Food f:players.get(pcounter).getFood()){
+					for(Food f:currplayer.getFood()){
 						selectedFood.addItem(f);
 					}
 					final JComponent[] things = new JComponent[] {
@@ -291,18 +292,24 @@ public class GameGUI {
 				int c = 0;
 				JComboBox<String> selectedFood = new JComboBox<String>();
 				for(Food f: foods){
-					selectedFood.addItem(f.getName() + ": " + store.getFoodamounts()[c]);
+					selectedFood.addItem(f.getName() + "$" + f.getValue() + " Stock: " + store.getFoodamounts()[c]);
 					c++;
 				}
 				final JComponent[] things = new JComponent[] {
 						new JLabel("Food To Buy:"),
 						selectedFood};
 
-				int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+				int result = JOptionPane.showConfirmDialog(null, things, "Player Has $" + currplayer.getMoney(), JOptionPane.PLAIN_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
-					System.out.println("You entered " +	selectedFood.getSelectedItem().toString());
+					int foodindex = selectedFood.getSelectedIndex();
+					if(currplayer.getMoney() >= foods.get(foodindex).getValue()){
+						ArrayList<Food> prevfood = currplayer.getFood();
+						prevfood.add(foods.get(foodindex));
+						currplayer.setMoney(currplayer.getMoney() - foods.get(foodindex).getValue());
+						currplayer.setFood(prevfood);
+					}
 				} else {
-					System.out.println("User canceled / closed the dialog, result = " + result);
+					System.out.println("Box Closed");
 				}
 			}
 		});
@@ -326,7 +333,13 @@ public class GameGUI {
 
 				int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
-					System.out.println("You entered " + selectedToy.getSelectedItem().toString());
+					int toyindex = selectedToy.getSelectedIndex();
+					if(currplayer.getMoney() >= toys.get(toyindex).getPrice()){
+						ArrayList<Toy> prevtoys = currplayer.getToys();
+						prevtoys.add(toys.get(toyindex));
+						currplayer.setMoney(currplayer.getMoney() - toys.get(toyindex).getPrice());
+						currplayer.setToys(prevtoys);
+					}
 				} else {
 					System.out.println("User canceled / closed the dialog, result = " + result);
 				}
@@ -347,16 +360,16 @@ public class GameGUI {
 
 
 
-		Player player = players.get(pcounter);
-		lblPlayerName.setText("Player: " + player.getName());
-		lblPlayerMoney.setText("$: " + player.getMoney());
-		lblPlayerScore.setText("Score: " + player.getScore());
-		lblActionsLeftFor.setText("Actions Left: " + player.getActions());
+		currplayer = players.get(pcounter);
+		lblPlayerName.setText("Player: " + currplayer.getName());
+		lblPlayerMoney.setText("$: " + currplayer.getMoney());
+		lblPlayerScore.setText("Score: " + currplayer.getScore());
+		lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 		lblDaysPassed.setText("Day: " + day);
 
-		pet1_text.setText(player.getPets().get(0).printStatus());
+		pet1_text.setText(currplayer.getPets().get(0).printStatus());
 		try{
-			pet2_text.setText(player.getPets().get(1).printStatus());
+			pet2_text.setText(currplayer.getPets().get(1).printStatus());
 		}catch(IndexOutOfBoundsException e){
 			//System.out.println("Only 1 Pet");
 		}
@@ -364,7 +377,7 @@ public class GameGUI {
 			//Dont really need anything here.
 		}
 		try{
-			pet3_text.setText(player.getPets().get(2).printStatus());
+			pet3_text.setText(currplayer.getPets().get(2).printStatus());
 		}catch(IndexOutOfBoundsException e){
 			//System.out.println("2 Or Less Pets");
 		}finally{
