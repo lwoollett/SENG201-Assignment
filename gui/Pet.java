@@ -36,17 +36,17 @@ public class Pet {
 		retstring += "Favourite Toy: " + favtoy + "\n";
 		retstring += "Favourite Food: " + favfood + "\n";		return retstring;
 	}
-
+/*  *Pet Status Updaters */
 	public void feed(Food food){
 		double io = food.getNutrion() * hungerNeed;
 		hunger += io;
 		if(hunger > 100){
 			hunger = 100;
 		}
-		toiletneed -= food.getMeal() * 10;
+		toiletneed -= food.getMeal() * 10;		if(toiletneed < 0){			toiletneed = 0;		}
 	}
 	public void play(Toy toy){
-		mood += toy.getHappiness() / 10;
+		mood += toy.getHappiness() / 10;		if(mood > 4){			mood = 4;		}		else if(mood < 1){			mood = 1;		}
 	}
 	public void sleep(){
 		tiredness = 100;
@@ -59,7 +59,7 @@ public class Pet {
 		hunger -= 5 * hungerNeed;
 		tiredness -= 5 * sleepiness;
 		toiletneed -= 20;
-	}		public String toString(){		String a = "";		return a;	}
+	}
 	/*
 	 * Getters And Setters
 	 */
