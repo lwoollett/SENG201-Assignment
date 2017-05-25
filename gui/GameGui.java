@@ -102,38 +102,46 @@ public class GameGUI {
 					JOptionPane.PLAIN_MESSAGE,
 					null, //Icon
 					null, //To use a list or just text box
-					"Player " + i);
+					"Player " + i
+					);
 
+			boolean playerdouble = false;
+			for(Player p: players){
+				if(playername.equals(p.getName())){
+					i--;
+					playerdouble = true;
+					System.out.println(playername + " " + p.getName());
+				}
+			}
+			if(playerdouble == false){
+				players.add(new Player(playername));
+				int val = 0;
+				//TODO Get Pet Names!
+				while(val != -1 && players.get(i-1).getPets().size() != 3){
+					String retPet = (String)JOptionPane.showInputDialog(
+							frmVirtualPets,
+							"Select Cancel To Stop Adding Pets",
+							"Customized Dialog",
+							JOptionPane.PLAIN_MESSAGE,
+							null,
+							petobjects,
+							petobjects[0]);
 
-			players.add(new Player(playername));
-
-
-			int val = 0;
-			//TODO Get Pet Names!
-			while(val != -1 && players.get(i-1).getPets().size() != 3){
-				String retPet = (String)JOptionPane.showInputDialog(
-						frmVirtualPets,
-						"Select Cancel To Stop Adding Pets",
-						"Customized Dialog",
-						JOptionPane.PLAIN_MESSAGE,
-						null,
-						petobjects,
-						petobjects[0]);
-
-
-				//System.out.println(retPet);
-				val = petstrings.indexOf(retPet);
-				ArrayList<Pet> ppets = players.get(i-1).getPets();
-				if(val == -1 && players.get(i-1).getPets().size() == 0){
-					val = 0;
-				}else if(val != -1){
-					ppets.add(pets.get(val));
-					players.get(i-1).setPets(ppets);
+					//System.out.println(retPet);
+					val = petstrings.indexOf(retPet);
+					ArrayList<Pet> ppets = players.get(i-1).getPets();
+					if(val == -1 && players.get(i-1).getPets().size() == 0){
+						val = 0;
+					}else if(val != -1){
+						ppets.add(pets.get(val));
+						players.get(i-1).setPets(ppets);
+					}
 				}
 			}
 		}
 		//Create our panels
 		JPanel action_panel = new JPanel();
+		action_panel.setToolTipText("dawdadad");
 		action_panel.setBounds(112, 0, 520, 510);
 		action_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		frmVirtualPets.getContentPane().add(action_panel);
@@ -260,6 +268,7 @@ public class GameGUI {
 					for(Pet p:currplayer.getPets()){
 						selectedPet.addItem(p);
 					}
+
 					JComboBox<Food> selectedFood = new JComboBox<Food>();
 					for(Food f:currplayer.getFood()){
 						selectedFood.addItem(f);
