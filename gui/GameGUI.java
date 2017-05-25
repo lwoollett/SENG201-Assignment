@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ import javax.swing.border.EtchedBorder;
  * The Class GameGUI.
  */
 public class GameGUI {
+	Random rand = new Random();
 
 	/** The store */
 	public static Store store = new Store();
