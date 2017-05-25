@@ -1,46 +1,23 @@
 package gui;
-/*
- *Do we need any more
- *Vars for the player?
- *What should the default
- *Amount of money be?
- *ArrayLists are masterrace
- */
-
 import java.util.ArrayList;
 
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Player.
+ * The player class
  */
 public class Player {
-
-	/** The name. */
 	private String name;
-
-	/** The money. */
-	private int money = 1000; //TODO Add a actual variable with reasoning.
-
-	/** The score. */
+	private int money = 1000; // Players Money.
 	private int score = 0;
-
-	/** The actions. */
 	private int actions = 2;
-
-	/** The pets. */
 	private ArrayList<Pet> pets = new ArrayList<Pet>();
-
-	/** The toys. */
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
-
-	/** The food. */
 	private ArrayList<Food> food = new ArrayList<Food>();
 
 	/**
 	 * Instantiates a new player.
 	 *
-	 * @param n the n
+	 * @param n the name for the player.
 	 */
 	public Player(String n){
 		name = n;
@@ -48,9 +25,12 @@ public class Player {
 
 	/**
 	 * Next day.
+	 * Resets actions, gets pets scores and adds them to the players score
+	 * Also gives a small amount of money.
 	 */
 	public void nextDay(){
 		actions = 2;
+		money += 10;
 		for(Pet pet: pets){
 			pet.nextDay();
 			score += pet.retScore();
@@ -59,6 +39,7 @@ public class Player {
 
 	/**
 	 * Prints the inventory.
+	 * Only really useful for command line application.
 	 */
 	public void printInventory() {
 		System.out.println("Toys:");
@@ -68,59 +49,59 @@ public class Player {
 		}
 		System.out.println("Food:");
 		for(Food f : food){
-			System.out.println(f.getName() + " nutrition: " + f.getNutrion());
+			System.out.println(f.getName() + " nutrition: " + f.getNutrition());
 		}
 	}
 
 	/**
-	 * Gets the name.
+	 * Gets the name of the player.
 	 *
-	 * @return the name
+	 * @return the name of the player
 	 */
 	public String getName(){
 		return name;
 	}
 
 	/**
-	 * Gets the money.
+	 * Gets the player's money.
 	 *
-	 * @return the money
+	 * @return the players money.
 	 */
 	public int getMoney(){
 		return money;
 	}
 
 	/**
-	 * Sets the money.
+	 * Sets the player's  money.
 	 *
-	 * @param m the new money
+	 * @param m the new money amount.
 	 */
 	public void setMoney(int m){
 		money = m;
 	}
 
 	/**
-	 * Gets the pets.
+	 * Gets the player's  pets.
 	 *
-	 * @return the pets
+	 * @return the pets.
 	 */
 	public ArrayList<Pet> getPets(){
 		return pets;
 	}
 
 	/**
-	 * Sets the pets.
+	 * Sets the player's pets.
 	 *
-	 * @param p the new pets
+	 * @param p the new arraylist of pets
 	 */
 	public void setPets(ArrayList<Pet> p){
 		pets = p;
 	}
 
 	/**
-	 * Gets the toys.
+	 * Gets the player's  toys.
 	 *
-	 * @return the toys
+	 * @return the player's  toys.
 	 */
 	public ArrayList<Toy> getToys(){
 		return toys;
@@ -136,7 +117,7 @@ public class Player {
 	}
 
 	/**
-	 * Gets the food.
+	 * Gets the player's  food.
 	 *
 	 * @return the food
 	 */
@@ -154,7 +135,7 @@ public class Player {
 	}
 
 	/**
-	 * Gets the score.
+	 * Gets the player's  score.
 	 *
 	 * @return the score
 	 */
@@ -163,7 +144,7 @@ public class Player {
 	}
 
 	/**
-	 * Sets the score.
+	 * Sets the player's  score.
 	 *
 	 * @param score the new score
 	 */
@@ -172,9 +153,9 @@ public class Player {
 	}
 
 	/**
-	 * Gets the actions.
+	 * Gets the player's  actions.
 	 *
-	 * @return the actions
+	 * @return the player's remaining actions
 	 */
 	public int getActions() {
 		return actions;

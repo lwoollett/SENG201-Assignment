@@ -76,7 +76,7 @@ public class Tester {
 
 		//Testing play
 		cat.setMood(2);
-		cat.play(new Toy("testToy", 50, 10));
+		cat.play(new Toy("testToy", 50, 10, 0));
 
 		if (3 == cat.getMood()){
 			printConfirmWork("play From 2");
@@ -87,7 +87,7 @@ public class Tester {
 		}
 
 		cat.setMood(4);
-		cat.play(new Toy("testToy", 50, 10));
+		cat.play(new Toy("testToy", 50, 10, 0));
 
 		if (4 == cat.getMood()){
 			printConfirmWork("play From 4");

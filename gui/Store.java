@@ -31,7 +31,7 @@ public class Store{
 	 * Instantiates a new store.
 	 */
 	public Store(){
-		//Toys name, price, happiness
+		//Toys name, price, happiness, durability
 		toys.add(new Toy("Bone", 10, 1, 10));
 		toys.add(new Toy("Mud", 0, 0, 1000));
 		toys.add(new Toy("Catnip", 30, 100, 100));
@@ -39,12 +39,12 @@ public class Store{
 		toys.add(new Toy("Hutch", 30, 1, 100));
 		toys.add(new Toy("Rat Wheel", 15, 1, 100));
 		//Foods Name, price, nutrition, taste, size
-		foods.add(new Food("Dog Food", 10, 10, 10, 2));
-		foods.add(new Food("Cat Food", 10, 10, 10, 2));
-		foods.add(new Food("Human", 10, 10, 10, 2));
-		foods.add(new Food("Carrot", 10, 10, 10, 2));
-		foods.add(new Food("Pellets", 10, 10, 10, 2));
-		foods.add(new Food("Grass", 10, 10, 10, 2));
+		foods.add(new Food("Dog Food", 20, 30, 10, 2));
+		foods.add(new Food("Cat Food", 20, 30, 10, 2));
+		foods.add(new Food("Human", 500, 50, 0, 3));
+		foods.add(new Food("Carrot", 5, 30, 10, 1));
+		foods.add(new Food("Pellets", 30, 20, 10, 1));
+		foods.add(new Food("Grass", 100, 30, 10, 1));
 	}
 
 	/**

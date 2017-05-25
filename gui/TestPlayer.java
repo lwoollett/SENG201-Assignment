@@ -6,14 +6,24 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestPlayer.
+ */
 public class TestPlayer {
 
+	/**
+	 * Test player.
+	 */
 	@Test
 	public void testPlayer() {
 		Player testPlayer = new Player("Test Player 1");
 		assertEquals("Test Player 1", testPlayer.getName());
 	}
 
+	/**
+	 * Test next day.
+	 */
 	@Test
 	public void testNextDay() {
 		Player testPlayer = new Player("Test Player 1");
@@ -27,6 +37,9 @@ public class TestPlayer {
 		assertEquals(testPetList,testPlayer.getPets());
 	}
 
+	/**
+	 * Test set pets.
+	 */
 	@Test
 	public void testSetPets() {
 		Player testPlayer = new Player("Test Player 1");

@@ -1,35 +1,27 @@
 package gui;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Food.
+ * The Food class.
+ * Foods are only created by the store
+ * Foods have a name, value, nutrition value, tastiness, and meal size.
  */
 public class Food {
-
-	/** The name. */
 	private String name; //Food Name
-
-	/** The value. */
 	private int value; //0 - INF
-
-	/** The nutrition. */
 	private int nutrition; //0-100
-
-	/** The tastiness. */
 	private int tastiness; //0-100
-
-	/** The mealsize. */
 	private int mealsize; //1; Smallmeal, 2; Medium Meal, 3; Big Meal
 
 	/**
-	 * Instantiates a new food.
+	 * Makes  a new food.
 	 *
-	 * @param foodName the food name
-	 * @param val the val
-	 * @param nutri the nutri
-	 * @param taste the taste
-	 * @param size the size
+	 * @param foodName the name of the food.
+	 * @param val the dollar value.
+	 * @param nutri the nutritional value.
+	 * @param taste the taste value.
+	 * @param size the size of the meal.
 	 */
+
 	//Constructor
 	public Food(String foodName, int val, int nutri, int taste, int size){
 		this.name = foodName;
@@ -52,7 +44,7 @@ public class Food {
 	/**
 	 * Gets the name.
 	 *
-	 * @return the name
+	 * @return the Name
 	 */
 	//Getters
 	public String getName(){
@@ -62,43 +54,43 @@ public class Food {
 	/**
 	 * Gets the value.
 	 *
-	 * @return the value
+	 * @return the $$ Value
 	 */
 	public int getValue(){
 		return value;
 	}
 
 	/**
-	 * Gets the nutrion.
+	 * Gets the nutrition.
 	 *
-	 * @return the nutrion
+	 * @return Nutrition
 	 */
-	public int getNutrion(){
+	public int getNutrition(){
 		return nutrition;
 	}
 
 	/**
 	 * Gets the tastiness.
 	 *
-	 * @return the tastiness
+	 * @return the tastiness of the food.
 	 */
 	public int getTastiness(){
 		return tastiness;
 	}
 
 	/**
-	 * Gets the meal.
+	 * Gets the meal size.
 	 *
-	 * @return the meal
+	 * @return the meal size
 	 */
 	public int getMeal(){
 		return mealsize;
 	}
 
 	/**
-	 * Sets the name.
+	 * Sets the name. This should not be used.
 	 *
-	 * @param n the new name
+	 * @param n the new name for the food.
 	 */
 	//Setters
 	public void setName(String n){
@@ -108,7 +100,7 @@ public class Food {
 	/**
 	 * Sets the value.
 	 *
-	 * @param v the new value
+	 * @param v the new value >> $$
 	 */
 	public void setValue(int v){
 		value = v;
@@ -133,9 +125,9 @@ public class Food {
 	}
 
 	/**
-	 * Sets the meal.
+	 * Sets the meal size.
 	 *
-	 * @param v the new meal
+	 * @param v (value) the new meal size
 	 */
 	public void setMeal(int v){
 		mealsize = v;

@@ -3,29 +3,18 @@ package gui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Game.
+ * CommandLine Game Class
  */
 public class Game {
-
-	/** The store. */
 	Store store = new Store();
-
-	/** The sc. */
 	Scanner sc = new Scanner(System.in);
-
-	/** The pnum. */
 	int pnum = 0;
-
-	/** The players. */
 	static ArrayList<Player> players = new ArrayList<Player>();
-
-	/** The pets. */
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
 	/**
-	 * Populatepets.
+	 * Populate the pets arraylist
 	 */
 	private void populatepets(){
 		pets.add(new Cat("UnNamed"));
@@ -37,7 +26,7 @@ public class Game {
 	}
 
 	/**
-	 * Keeps Trying for a value between two options
+	 * Keeps Trying for a value between two options.
 	 *
 	 * @param ln the lower value
 	 * @param hn the higher value
@@ -60,8 +49,7 @@ public class Game {
 
 	/**
 	 * Gets the players.
-	 *
-	 * @return the players
+	 * No return value, but edits a list.
 	 */
 	private void getPlayers() {
 		System.out.println("How Many Players: ");
@@ -91,8 +79,7 @@ public class Game {
 
 	/**
 	 * Gets the pets.
-	 *
-	 * @return the pets
+	 * Again, no return value but edits a list.
 	 */
 	private void getPets(){
 		for(Player p : players){
@@ -121,9 +108,9 @@ public class Game {
 	}
 
 	/**
-	 * Feed.
+	 * Feed a pet, given a player.
 	 *
-	 * @param p the p
+	 * @param p, the player.
 	 */
 	private void feed(Player p){
 		System.out.println("What pet would you like to feed?");
@@ -156,9 +143,9 @@ public class Game {
 	}
 
 	/**
-	 * Play.
+	 * Play with a pet.
 	 *
-	 * @param p the p
+	 * @param p the player.
 	 */
 	private void play(Player p){
 		System.out.println("What pet would you like to play with?");
@@ -195,9 +182,9 @@ public class Game {
 	}
 
 	/**
-	 * Store trip.
+	 * Go to the store.
 	 *
-	 * @param p the p
+	 * @param p the player.
 	 */
 	private void storeTrip(Player p){
 		System.out.println("Welcome to the store!");
@@ -261,9 +248,9 @@ public class Game {
 	}
 
 	/**
-	 * End day.
+	 * End the day for the player.
 	 *
-	 * @param p the p
+	 * @param p the player.
 	 */
 	private void endDay(Player p){
 		p.setActions(2);
@@ -275,9 +262,9 @@ public class Game {
 	}
 
 	/**
-	 * Day loop.
+	 * Day loop for the player.
 	 *
-	 * @param p the p
+	 * @param p the player.
 	 */
 	private void dayLoop(Player p){
 		//Loop for every day.
