@@ -14,7 +14,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 
@@ -273,16 +272,18 @@ public class GameGUI {
 					//TODO Add a dialouge box that has a error message
 					System.out.println("Player Has No Food");
 				}else{
-					ArrayList<Pet> pets = currplayer.getPets();
 
-					JComboBox<Pet> selectedPet = new JComboBox<Pet>();
+					ArrayList<Pet> pets = currplayer.getPets();
+					ArrayList<Food> foods = currplayer.getFood();
+
+					JComboBox<String> selectedPet = new JComboBox<String>();
 					for(Pet p:currplayer.getPets()){
-						selectedPet.addItem(p);
+						selectedPet.addItem(p.getPetname());
 					}
 
-					JComboBox<Food> selectedFood = new JComboBox<Food>();
+					JComboBox<String> selectedFood = new JComboBox<String>();
 					for(Food f:currplayer.getFood()){
-						selectedFood.addItem(f);
+						selectedFood.addItem(f.getName());
 					}
 					final JComponent[] things = new JComponent[] {
 							new JLabel("Pet To Feed"),
@@ -293,11 +294,16 @@ public class GameGUI {
 
 					int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
 					if (result == JOptionPane.OK_OPTION) {
-						System.out.println("You entered " +
-								selectedPet.getSelectedItem().toString() + ", " +
-								selectedFood.getSelectedItem().toString());
-					} else {
-						System.out.println("User canceled / closed the dialog, result = " + result);
+						System.out.println(selectedPet.getSelectedIndex());
+						System.out.println(selectedPet.getSelectedIndex());
+						Pet setPet = pets.get(selectedPet.getSelectedIndex());
+						Food setFood = foods.get(selectedFood.getSelectedIndex());
+						setPet.feed(setFood);
+						foods.remove(selectedFood);
+						currplayer.setFood(foods);
+						for(Food f : currplayer.getFood()){
+							System.out.println(f.getName());
+						}
 					}
 				}
 			}
@@ -312,7 +318,7 @@ public class GameGUI {
 				int c = 0;
 				JComboBox<String> selectedFood = new JComboBox<String>();
 				for(Food f: foods){
-					selectedFood.addItem(f.getName() + "$" + f.getValue() + " Stock: " + store.getFoodamounts()[c]);
+					selectedFood.addItem(f.getName() + " $" + f.getValue() + " Stock: " + store.getFoodamounts()[c]);
 					c++;
 				}
 				final JComponent[] things = new JComponent[] {
@@ -368,14 +374,31 @@ public class GameGUI {
 		nav_panel.add(btnToyStore);
 
 		JButton btnPlay = new JButton("Play");
+		btnPlay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//TODO ADD SHIT HERE YOU MORON
+			}
+		});
+
 		nav_panel.add(btnPlay);
 
 		JButton btnHelp = new JButton("Help");
-		btnHelp.setHorizontalAlignment(SwingConstants.LEFT);
+		btnHelp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//TODO ADD SHIT HERE YOU MORON
+			}
+		});
 		nav_panel.add(btnHelp);
 
 		JButton btnEndDay = new JButton("End Day");
-		btnEndDay.setHorizontalAlignment(SwingConstants.LEFT);
+		btnEndDay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//TODO ADD SHIT HERE YOU MORON
+			}
+		});
 		nav_panel.add(btnEndDay);
 
 
