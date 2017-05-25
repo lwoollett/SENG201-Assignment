@@ -5,22 +5,22 @@ package gui;
  * The Class Food.
  */
 public class Food {
-	
+
 	/** The name. */
 	private String name; //Food Name
-	
+
 	/** The value. */
 	private int value; //0 - INF
-	
+
 	/** The nutrition. */
 	private int nutrition; //0-100
-	
+
 	/** The tastiness. */
 	private int tastiness; //0-100
-	
+
 	/** The mealsize. */
 	private int mealsize; //1; Smallmeal, 2; Medium Meal, 3; Big Meal
-	
+
 	/**
 	 * Instantiates a new food.
 	 *
@@ -38,7 +38,17 @@ public class Food {
 		this.tastiness = taste;
 		this.mealsize = size;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString(){
+		String retstring;
+		retstring = name + " " + nutrition;
+		return retstring;
+	}
+
 	/**
 	 * Gets the name.
 	 *
@@ -48,7 +58,7 @@ public class Food {
 	public String getName(){
 		return name;
 	}
-	
+
 	/**
 	 * Gets the value.
 	 *
@@ -57,7 +67,7 @@ public class Food {
 	public int getValue(){
 		return value;
 	}
-	
+
 	/**
 	 * Gets the nutrion.
 	 *
@@ -66,7 +76,7 @@ public class Food {
 	public int getNutrion(){
 		return nutrition;
 	}
-	
+
 	/**
 	 * Gets the tastiness.
 	 *
@@ -75,7 +85,7 @@ public class Food {
 	public int getTastiness(){
 		return tastiness;
 	}
-	
+
 	/**
 	 * Gets the meal.
 	 *
@@ -84,7 +94,7 @@ public class Food {
 	public int getMeal(){
 		return mealsize;
 	}
-	
+
 	/**
 	 * Sets the name.
 	 *
@@ -94,7 +104,7 @@ public class Food {
 	public void setName(String n){
 		name = n;
 	}
-	
+
 	/**
 	 * Sets the value.
 	 *
@@ -103,7 +113,7 @@ public class Food {
 	public void setValue(int v){
 		value = v;
 	}
-	
+
 	/**
 	 * Sets the nutrion.
 	 *
@@ -112,7 +122,7 @@ public class Food {
 	public void setNutrion(int v){
 		nutrition = v;
 	}
-	
+
 	/**
 	 * Sets the tastiness.
 	 *
@@ -121,7 +131,7 @@ public class Food {
 	public void setTastiness(int v){
 		mealsize = v;
 	}
-	
+
 	/**
 	 * Sets the meal.
 	 *
@@ -130,6 +140,6 @@ public class Food {
 	public void setMeal(int v){
 		mealsize = v;
 	}
-	
-	
+
+
 }

@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -23,16 +24,16 @@ import javax.swing.border.EtchedBorder;
  */
 public class GameGUI {
 
-	/** The store. */
+	/** The store */
 	public static Store store = new Store();
 
-	/** The pnum. */
+	/** The Number of players. */
 	int pnum = 0;
 
 	/** The day. */
 	int day = 1;
 
-	/** The currplayer. */
+	/** The current player. */
 	Player currplayer;
 
 	/** The pcounter. */
@@ -45,7 +46,7 @@ public class GameGUI {
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
 	/**
-	 * Populatepets.
+	 * Populates the pet arraylist
 	 */
 	private void populatepets(){
 		pets.add(new Cat("UnNamed"));
@@ -139,18 +140,17 @@ public class GameGUI {
 			if(playerdouble == false){
 				players.add(new Player(playername));
 				int val = 0;
-				//TODO Get Pet Names!
 				while(val != -1 && players.get(i-1).getPets().size() != 3){
 					String retPet = (String)JOptionPane.showInputDialog(
 							frmVirtualPets,
 							"Select Cancel To Stop Adding Pets",
-							"Customized Dialog",
+							"Select A Pet",
 							JOptionPane.PLAIN_MESSAGE,
 							null,
 							petobjects,
 							petobjects[0]);
 
-					//System.out.println(retPet);
+
 					val = petstrings.indexOf(retPet);
 					ArrayList<Pet> ppets = players.get(i-1).getPets();
 					if(val == -1 && players.get(i-1).getPets().size() == 0){
@@ -169,6 +169,12 @@ public class GameGUI {
 						p.setPetname(petname);
 						ppets.add(p);
 						players.get(i-1).setPets(ppets);
+						/*TODO:
+						 * Fix the bug where having 2 or more of the same
+						 * pet will make them all have the same name.
+						 * The name is the same as the last pet, which is very very odd.
+						 *
+						 */
 					}
 				}
 			}
@@ -241,11 +247,17 @@ public class GameGUI {
 		JLabel lblDaysPassed = new JLabel("Days Passed");
 		status_panel.add(lblDaysPassed);
 
+		DefaultListModel<String> toys_model = new DefaultListModel<String>();
+		toys_model.addElement("Toy: Durability");
 
-		JList<String> list_toys = new JList<String>();
+		DefaultListModel<String> food_model = new DefaultListModel<String>();
+		food_model.addElement("Food: Nutrition");
+
+
+		JList<String> list_toys = new JList<String>(toys_model);
 		inventory_panel.add(list_toys);
 
-		JList<String> list_food = new JList<String>();
+		JList<String> list_food = new JList<String>(food_model);
 		inventory_panel.add(list_food);
 
 
@@ -293,10 +305,9 @@ public class GameGUI {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if(currplayer.getFood().size() == 0){
-					//TODO Add a dialouge box that has a error message
+					//TODO Make a dialog box where the player is told that they have no food.
 					System.out.println("Player Has No Food");
 				}else{
-
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Food> foods = currplayer.getFood();
 
@@ -323,6 +334,12 @@ public class GameGUI {
 						setPet.feed(setFood);
 						foods.remove(setFood);
 						currplayer.setFood(foods);
+
+						food_model.clear();
+						food_model.addElement("Food: Nutrition");
+						for(Food f:foods){
+							food_model.addElement(f.toString());
+						}
 					}
 				}
 			}
@@ -352,9 +369,16 @@ public class GameGUI {
 						prevfood.add(foods.get(foodindex));
 						currplayer.setMoney(currplayer.getMoney() - foods.get(foodindex).getValue());
 						currplayer.setFood(prevfood);
+
+						food_model.clear();
+						food_model.addElement("Food: Nutrition");
+						for(Food f:prevfood){
+							food_model.addElement(f.toString());
+						}
+
 					}
 				} else {
-					System.out.println("Box Closed");
+					//System.out.println("Box Closed");
 				}
 			}
 		});
@@ -376,7 +400,7 @@ public class GameGUI {
 						new JLabel("Toy To Buy:"),
 						selectedToy};
 
-				int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+				int result = JOptionPane.showConfirmDialog(null, things, "Player Has $" + currplayer.getMoney(), JOptionPane.PLAIN_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
 					int toyindex = selectedToy.getSelectedIndex();
 					if(currplayer.getMoney() >= toys.get(toyindex).getPrice()){
@@ -384,9 +408,15 @@ public class GameGUI {
 						prevtoys.add(toys.get(toyindex));
 						currplayer.setMoney(currplayer.getMoney() - toys.get(toyindex).getPrice());
 						currplayer.setToys(prevtoys);
+
+						toys_model.clear();
+						toys_model.addElement("Toy: Durability");
+						for(Toy t: prevtoys){
+							toys_model.addElement(t.toString());
+						}
 					}
 				} else {
-					System.out.println("User canceled / closed the dialog, result = " + result);
+					//System.out.println("User canceled / closed the dialog, result = " + result);
 				}
 			}
 		});
@@ -396,11 +426,63 @@ public class GameGUI {
 		btnPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				//TODO ADD SHIT HERE YOU MORON
+				if(currplayer.getToys().size() == 0){
+					//TODO Make a dialog box where the player is told that they have no toys.
+					System.out.println("Player Has No Toys");
+				}else{
+					ArrayList<Pet> pets = currplayer.getPets();
+					ArrayList<Toy> toys = currplayer.getToys();
+
+					JComboBox<String> selectedPet = new JComboBox<String>();
+					for(Pet p:currplayer.getPets()){
+						selectedPet.addItem(p.getPetname());
+					}
+
+					JComboBox<String> selectedToy = new JComboBox<String>();
+					for(Toy t: toys){
+						selectedToy.addItem(t.getName());
+					}
+					final JComponent[] things = new JComponent[] {
+							new JLabel("Pet To Feed"),
+							selectedPet,
+							new JLabel("Toy To Use"),
+							selectedToy
+					};
+
+					int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
+					if (result == JOptionPane.OK_OPTION) {
+						Pet setPet = pets.get(selectedPet.getSelectedIndex());
+						Toy setToy = toys.get(selectedToy.getSelectedIndex());
+						setPet.play(setToy);
+						int dur = setToy.getDurability();
+						if(dur - setPet.getRoughness() < 1){
+							toys.remove(setToy);
+						}else{
+							setToy.setDurability(dur - setPet.getRoughness());
+							toys.remove(setToy);
+							toys.add(setToy);
+						}
+						currplayer.setToys(toys);
+						toys_model.clear();
+						toys_model.addElement("Toy: Durability");
+						for(Toy t: toys){
+							toys_model.addElement(t.toString());
+						}
+					}
+				}
 			}
 		});
 
 		nav_panel.add(btnPlay);
+
+		JButton btnGoToilet = new JButton("End Day");
+		btnGoToilet.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//TODO ADD SHIT HERE YOU MORON
+			}
+		});
+		nav_panel.add(btnGoToilet);
 
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addMouseListener(new MouseAdapter() {
@@ -410,6 +492,7 @@ public class GameGUI {
 			}
 		});
 		nav_panel.add(btnHelp);
+
 
 		JButton btnEndDay = new JButton("End Day");
 		btnEndDay.addMouseListener(new MouseAdapter() {

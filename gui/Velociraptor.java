@@ -5,7 +5,7 @@ package gui;
  * The Class Velociraptor.
  */
 public class Velociraptor extends Pet{
-	
+
 	/**
 	 * Instantiates a new velociraptor.
 	 *
@@ -14,7 +14,7 @@ public class Velociraptor extends Pet{
 	public Velociraptor(String name) {
 		super(name);
 		super.setHungerNeed(7.00);
-		super.setRoughness(7);
+		super.setRoughness(70);
 		super.setSleepiness(0);
 		super.setFavfood("Human");
 		super.setFavtoy("Human");

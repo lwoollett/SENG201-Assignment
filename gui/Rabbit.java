@@ -5,7 +5,7 @@ package gui;
  * The Class Rabbit.
  */
 public class Rabbit extends Pet{
-	
+
 	/**
 	 * Instantiates a new rabbit.
 	 *
@@ -14,7 +14,7 @@ public class Rabbit extends Pet{
 	public Rabbit(String name) {
 		super(name);
 		super.setHungerNeed(2.00);
-		super.setRoughness(1);
+		super.setRoughness(10);
 		super.setSleepiness(2);
 		super.setFavfood("Carrot");
 		super.setFavtoy("Food");

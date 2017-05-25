@@ -8,25 +8,25 @@ import java.util.Random;
  * The Class Store.
  */
 public class Store{
-	
+
 	/** The rand. */
 	private Random rand = new Random();
-	
+
 	/** The toys. */
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
-	
+
 	/** The foods. */
 	private ArrayList<Food> foods = new ArrayList<Food>();
-	
+
 	/** The foodamounts. */
 	private int[] foodamounts = {69, 69, 999999, 1, 12, 4};
-	
+
 	/** The toyamounts. */
-	private int[] toyamounts = {1, 1, 1, 1, 1, 1};
+	private int[] toyamounts = {5, 2, 12, 11, 42, 13};
 	/*
 	 * Food Names
 	 */
-	
+
 	/**
 	 * Instantiates a new store.
 	 */
@@ -46,7 +46,7 @@ public class Store{
 		foods.add(new Food("Pellets", 10, 10, 10, 2));
 		foods.add(new Food("Grass", 10, 10, 10, 2));
 	}
-	
+
 	/**
 	 * Gets the foodamounts.
 	 *
@@ -55,17 +55,17 @@ public class Store{
 	public int[] getFoodamounts() {
 		return foodamounts;
 	}
-	
+
 	/**
 	 * Gets the toyamounts.
 	 *
 	 * @return the toyamounts
 	 */
 	public int[] getToyamounts() {
-	
+
 		return toyamounts;
 	}
-	
+
 	/**
 	 * Gets the toys.
 	 *
@@ -74,7 +74,7 @@ public class Store{
 	public ArrayList<Toy> getToys() {
 		return toys;
 	}
-	
+
 	/**
 	 * Gets the foods.
 	 *
@@ -83,7 +83,7 @@ public class Store{
 	public ArrayList<Food> getFoods() {
 		return foods;
 	}
-	
+
 	/**
 	 * Sets the toyamounts.
 	 *
@@ -92,7 +92,7 @@ public class Store{
 	public void setToyamounts(int[] toyamounts) {
 		this.toyamounts = toyamounts;
 	}
-	
+
 	/**
 	 * Sets the foodamounts.
 	 *
