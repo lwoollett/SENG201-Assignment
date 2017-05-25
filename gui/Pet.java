@@ -20,27 +20,16 @@ package gui;
 		tiredness = 100;
 		mood = 4;
 		toiletneed = 100;
-		weight = 50;
+		weight = 100;
 	}
 
-	/**	 * Prints the status.	 *	 * @return the string	 */	public String printStatus(){		String retstring = "";		retstring += "Pet Name: " + petname + "\n\n";
-		retstring += "Hunger: " + hunger + "\n";
-		retstring += "Tiredness: " + tiredness + "\n";
-		retstring += "Mood: " + mood + "\n";
-		retstring += "Alive: " + alive + "\n";
-		retstring += "Toilet Need: " + toiletneed + "\n";
-		retstring += "Weight: " + weight + "\n";
-		retstring += "Sleepiness: " + sleepiness + "\n";
-		retstring += "Need For Food: " + hungerNeed + "\n";
-		retstring += "Roughness: " + roughness + "\n";
-		retstring += "Favourite Toy: " + favtoy + "\n";
-		retstring += "Favourite Food: " + favfood + "\n";		return retstring;
-	}	/**	 * Feed.	 *	 * @param food the food	 */	public void feed(Food food){
+	/**	 * Prints the status.	 *	 * @return the string	 */	public String printStatus(){		String retstring = "";		if(alive){			retstring += "Pet Name: " + petname + "\n\n";			retstring += "Hunger: " + hunger + "\n";			retstring += "Tiredness: " + tiredness + "\n";			retstring += "Mood: " + mood + "\n";			retstring += "Alive: " + alive + "\n";			retstring += "Toilet Need: " + toiletneed + "\n";			retstring += "Weight: " + weight + "\n";			retstring += "Sleepiness: " + sleepiness + "\n";			retstring += "Need For Food: " + hungerNeed + "\n";			retstring += "Roughness: " + roughness + "\n";			retstring += "Favourite Toy: " + favtoy + "\n";			retstring += "Favourite Food: " + favfood + "\n";		}else{			retstring = "Pet\nIs\nDead\nYou\nAre\nA\nHorrible\nOwner.";		}		return retstring;
+	}	public int retScore(){		int petScore = 0;		if(alive){			petScore += hunger;			petScore += tiredness;			petScore += mood * 10;			petScore += toiletneed;			petScore += weight;			return petScore;		}else{			return petScore;		}	}	/**	 * Feed.	 *	 * @param food the food	 */	public void feed(Food food){		if(food.getName().equals(favfood)){			mood += 1;			if(mood > 4){				mood = 4;			}		}
 		double io = food.getNutrion() * hungerNeed;
 		hunger += io;
 		if(hunger > 100){
 			hunger = 100;
-		}
+		}		weight += food.getMeal() * 10;		if(weight > 150){			mood -= 2;		}else if(weight < 50){			mood -= 2;		}
 		toiletneed -= food.getMeal() * 10;		if(toiletneed < 0){			toiletneed = 0;		}
 	}
 	/**	 * Play.	 *	 * @param toy the toy	 */	public void play(Toy toy){
@@ -51,12 +40,12 @@ package gui;
 	}
 
 	/**	 * Go to toilet.	 */	public void goToToilet(){
-		toiletneed = 100;
+		toiletneed += 100;
 	}
 	/**	 * Next day.	 */	public void nextDay(){
 		hunger -= 5 * hungerNeed;
 		tiredness -= 5 * sleepiness;
-		toiletneed -= 20;
+		toiletneed -= 20;		if(hunger <= 0){			hunger = 0;			alive = false;			mood = 0;		}if(tiredness <= 0){			tiredness = 0;			mood = 0;		}if(toiletneed <= 0){			toiletneed = 0;			mood = 0;		}
 	}
 	/*
 	 * Getters And Setters

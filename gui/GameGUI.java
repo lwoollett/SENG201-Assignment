@@ -30,6 +30,7 @@ public class GameGUI {
 	/** The Number of players. */
 	int pnum = 0;
 
+	int maxdays = 0;
 	/** The day. */
 	int day = 1;
 
@@ -99,6 +100,25 @@ public class GameGUI {
 		frmVirtualPets.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVirtualPets.getContentPane().setLayout(null);
 
+		while(maxdays == 0){
+			String playername = (String)JOptionPane.showInputDialog(
+					frmVirtualPets,
+					"How Many Days?",
+					"Day Selection",
+					JOptionPane.PLAIN_MESSAGE,
+					null, //Icon
+					null, //To use a list or just text box
+					"29"
+					);
+			try{
+				maxdays = Integer.parseInt(playername);
+			}catch(Exception e){
+				//User has entered something thats not a int. thats cool, we'll just loop again
+				maxdays = 0;
+			}
+		}
+
+
 		Object[] options = {"1", //Selection options for the popup
 				"2",
 		"3"};
@@ -113,6 +133,8 @@ public class GameGUI {
 		}
 
 		//Counter for player, then pets.
+		//The fuck is this spaghetti code??
+		//TODO Make into actual code
 		Object[] petobjects = {"Cat", "Cow", "Dog", "Rabbit", "Rat", "Velociraptor"};
 		ArrayList<String> petstrings = new ArrayList<String>();
 		petstrings.add("Cat");petstrings.add("Cow");petstrings.add("Dog");petstrings.add("Rabbit");petstrings.add("Rat");petstrings.add("Velociraptor");
@@ -260,53 +282,14 @@ public class GameGUI {
 		JList<String> list_food = new JList<String>(food_model);
 		inventory_panel.add(list_food);
 
-
-		JButton btnHomeScreen = new JButton("Home Screen");
-		btnHomeScreen.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				System.out.println("Clicked!");
-				inventory_panel.setVisible(true);
-				pet1_panel.setVisible(true);
-				pet2_panel.setVisible(true);
-				pet3_panel.setVisible(true);
-				Player player = currplayer;
-				lblPlayerName.setText("Player: " + currplayer.getName());
-				lblPlayerMoney.setText("$: " + currplayer.getMoney());
-				lblPlayerScore.setText("Score: " + currplayer.getScore());
-				lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
-				lblDaysPassed.setText("Day: " + day);
-
-				pet1_text.setText(player.getPets().get(0).printStatus());
-				try{
-					pet2_text.setText(player.getPets().get(1).printStatus());
-				}catch(IndexOutOfBoundsException e){
-					//System.out.println("Only 1 Pet");
-				}
-				finally{
-					//Dont really need anything here.
-				}
-				try{
-					pet3_text.setText(player.getPets().get(2).printStatus());
-				}catch(IndexOutOfBoundsException e){
-					//System.out.println("Only 2 Pets");
-				}finally{
-					//Again, we dont need to do anything here
-				}
-
-
-			}
-		});
-
-		nav_panel.add(btnHomeScreen);
-
 		JButton btnFeed = new JButton("Feed");
 		btnFeed.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if(currplayer.getFood().size() == 0){
-					//TODO Make a dialog box where the player is told that they have no food.
-					System.out.println("Player Has No Food");
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " has no food.");
+				}else if(currplayer.getActions() == 0){
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Food> foods = currplayer.getFood();
@@ -334,6 +317,23 @@ public class GameGUI {
 						setPet.feed(setFood);
 						foods.remove(setFood);
 						currplayer.setFood(foods);
+
+						currplayer.setActions(currplayer.getActions() - 1);
+						lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
+
+
+
+						pet1_text.setText(currplayer.getPets().get(0).printStatus());
+						try{
+							pet2_text.setText(currplayer.getPets().get(1).printStatus());
+						}catch(IndexOutOfBoundsException e){
+							pet2_text.setText("No Second Pet");
+						}
+						try{
+							pet3_text.setText(currplayer.getPets().get(2).printStatus());
+						}catch(IndexOutOfBoundsException e){
+							//System.out.println("Only 2 Pets");
+						}
 
 						food_model.clear();
 						food_model.addElement("Food: Nutrition");
@@ -369,6 +369,8 @@ public class GameGUI {
 						prevfood.add(foods.get(foodindex));
 						currplayer.setMoney(currplayer.getMoney() - foods.get(foodindex).getValue());
 						currplayer.setFood(prevfood);
+
+						lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
 
 						food_model.clear();
 						food_model.addElement("Food: Nutrition");
@@ -409,6 +411,8 @@ public class GameGUI {
 						currplayer.setMoney(currplayer.getMoney() - toys.get(toyindex).getPrice());
 						currplayer.setToys(prevtoys);
 
+						lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
+
 						toys_model.clear();
 						toys_model.addElement("Toy: Durability");
 						for(Toy t: prevtoys){
@@ -427,8 +431,9 @@ public class GameGUI {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if(currplayer.getToys().size() == 0){
-					//TODO Make a dialog box where the player is told that they have no toys.
-					System.out.println("Player Has No Toys");
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " has no toys.");
+				}else if(currplayer.getActions() == 0){
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Toy> toys = currplayer.getToys();
@@ -443,7 +448,7 @@ public class GameGUI {
 						selectedToy.addItem(t.getName());
 					}
 					final JComponent[] things = new JComponent[] {
-							new JLabel("Pet To Feed"),
+							new JLabel("Pet To Play With"),
 							selectedPet,
 							new JLabel("Toy To Use"),
 							selectedToy
@@ -462,6 +467,22 @@ public class GameGUI {
 							toys.remove(setToy);
 							toys.add(setToy);
 						}
+
+						currplayer.setActions(currplayer.getActions() - 1);
+						lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
+
+						pet1_text.setText(currplayer.getPets().get(0).printStatus());
+						try{
+							pet2_text.setText(currplayer.getPets().get(1).printStatus());
+						}catch(IndexOutOfBoundsException e){
+							pet2_text.setText("No Second Pet");
+						}
+						try{
+							pet3_text.setText(currplayer.getPets().get(2).printStatus());
+						}catch(IndexOutOfBoundsException e){
+							//System.out.println("Only 2 Pets");
+						}
+
 						currplayer.setToys(toys);
 						toys_model.clear();
 						toys_model.addElement("Toy: Durability");
@@ -475,14 +496,89 @@ public class GameGUI {
 
 		nav_panel.add(btnPlay);
 
-		JButton btnGoToilet = new JButton("End Day");
+		JButton btnGoToilet = new JButton("Toilet");
 		btnGoToilet.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				//TODO ADD SHIT HERE YOU MORON
+				if(currplayer.getActions() == 0){
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
+				}else{
+					ArrayList<Pet> pets = currplayer.getPets();
+					JComboBox<String> selectedPet = new JComboBox<String>();
+					for(Pet p:currplayer.getPets()){
+						selectedPet.addItem(p.getPetname());
+					}
+
+					final JComponent[] things = new JComponent[] {
+							new JLabel("Pet To Send To Toilet:"),
+							selectedPet
+					};
+
+					int result = JOptionPane.showConfirmDialog(null, things, "Sending Pet To Toilet", JOptionPane.PLAIN_MESSAGE);
+					if (result == JOptionPane.OK_OPTION) {
+						Pet setPet = pets.get(selectedPet.getSelectedIndex());
+						setPet.goToToilet();
+					}
+
+					currplayer.setActions(currplayer.getActions() - 1);
+					lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
+					pet1_text.setText(currplayer.getPets().get(0).printStatus());
+					try{
+						pet2_text.setText(currplayer.getPets().get(1).printStatus());
+					}catch(IndexOutOfBoundsException e){
+						pet2_text.setText("No Second Pet");
+					}
+					try{
+						pet3_text.setText(currplayer.getPets().get(2).printStatus());
+					}catch(IndexOutOfBoundsException e){
+						//System.out.println("Only 2 Pets");
+					}
+				}
 			}
 		});
 		nav_panel.add(btnGoToilet);
+
+		JButton btnSleep = new JButton("Sleep");
+		btnSleep.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				if(currplayer.getActions() == 0){
+					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
+				}else{
+					ArrayList<Pet> pets = currplayer.getPets();
+					JComboBox<String> selectedPet = new JComboBox<String>();
+					for(Pet p:currplayer.getPets()){
+						selectedPet.addItem(p.getPetname());
+					}
+
+					final JComponent[] things = new JComponent[] {
+							new JLabel("Pet To Send To Sleep:"),
+							selectedPet
+					};
+
+					int result = JOptionPane.showConfirmDialog(null, things, "Sending Pet To Sleep", JOptionPane.PLAIN_MESSAGE);
+					if (result == JOptionPane.OK_OPTION) {
+						Pet setPet = pets.get(selectedPet.getSelectedIndex());
+						setPet.sleep();
+					}
+
+					currplayer.setActions(currplayer.getActions() - 1);
+					lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
+					pet1_text.setText(currplayer.getPets().get(0).printStatus());
+					try{
+						pet2_text.setText(currplayer.getPets().get(1).printStatus());
+					}catch(IndexOutOfBoundsException e){
+						pet2_text.setText("No Second Pet");
+					}
+					try{
+						pet3_text.setText(currplayer.getPets().get(2).printStatus());
+					}catch(IndexOutOfBoundsException e){
+						//System.out.println("Only 2 Pets");
+					}
+				}
+			}
+		});
+		nav_panel.add(btnSleep);
 
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addMouseListener(new MouseAdapter() {
@@ -498,7 +594,40 @@ public class GameGUI {
 		btnEndDay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				//TODO ADD SHIT HERE YOU MORON
+				pcounter += 1;
+				if(pcounter > players.size()-1){
+					pcounter = 0;
+					store.nextDay();
+					for(Player p:players){
+						p.nextDay();
+					}
+					day += 1;
+					lblDaysPassed.setText("Day: " + day);
+					lblPlayerScore.setText("Score: " + currplayer.getScore());
+
+				}else{
+					currplayer = players.get(pcounter);
+					lblPlayerName.setText("Player: " + currplayer.getName());
+					lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
+					lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
+
+				}
+
+				lblDaysPassed.setText("Day: " + day);
+				lblPlayerScore.setText("Score: " + currplayer.getScore());
+
+
+				pet1_text.setText(currplayer.getPets().get(0).printStatus());
+				try{
+					pet2_text.setText(currplayer.getPets().get(1).printStatus());
+				}catch(IndexOutOfBoundsException e){
+					pet2_text.setText("No Second Pet");
+				}
+				try{
+					pet3_text.setText(currplayer.getPets().get(2).printStatus());
+				}catch(IndexOutOfBoundsException e){
+					pet3_text.setText("No Third Pet");
+				}
 			}
 		});
 		nav_panel.add(btnEndDay);
@@ -507,7 +636,7 @@ public class GameGUI {
 
 		currplayer = players.get(pcounter);
 		lblPlayerName.setText("Player: " + currplayer.getName());
-		lblPlayerMoney.setText("$: " + currplayer.getMoney());
+		lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
 		lblPlayerScore.setText("Score: " + currplayer.getScore());
 		lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 		lblDaysPassed.setText("Day: " + day);
@@ -516,19 +645,12 @@ public class GameGUI {
 		try{
 			pet2_text.setText(currplayer.getPets().get(1).printStatus());
 		}catch(IndexOutOfBoundsException e){
-			//System.out.println("Only 1 Pet");
-		}
-		finally{
-			//Dont really need anything here.
+			pet2_text.setText("No Second Pet");
 		}
 		try{
 			pet3_text.setText(currplayer.getPets().get(2).printStatus());
 		}catch(IndexOutOfBoundsException e){
-			//System.out.println("2 Or Less Pets");
-		}finally{
-			//Again, we dont need to do anything here
+			pet3_text.setText("No Third Pet");
 		}
-
-
 	}
 }

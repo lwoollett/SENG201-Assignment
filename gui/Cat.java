@@ -16,7 +16,7 @@ public class Cat extends Pet{
 		super.setHungerNeed(3.00);
 		super.setRoughness(50);
 		super.setSleepiness(7);
-		super.setFavfood("Cat Food");
+		super.setFavfood("Catnip");
 		super.setFavtoy("Scratch Post");
 	}
 }

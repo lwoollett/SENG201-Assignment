@@ -32,12 +32,12 @@ public class Store{
 	 */
 	public Store(){
 		//Toys name, price, happiness
-		toys.add(new Toy("Bone", 10, 15));
-		toys.add(new Toy("Mud", 10, 15));
-		toys.add(new Toy("Scratch Post", 10, 15));
-		toys.add(new Toy("Human", 10, 15));
-		toys.add(new Toy("Food", 10, 15));
-		toys.add(new Toy("Rat Wheel", 10, 15));
+		toys.add(new Toy("Bone", 10, 1, 10));
+		toys.add(new Toy("Mud", 0, 0, 1000));
+		toys.add(new Toy("Catnip", 30, 100, 100));
+		toys.add(new Toy("Human", 10, 10, 5));
+		toys.add(new Toy("Hutch", 30, 1, 100));
+		toys.add(new Toy("Rat Wheel", 15, 1, 100));
 		//Foods Name, price, nutrition, taste, size
 		foods.add(new Food("Dog Food", 10, 10, 10, 2));
 		foods.add(new Food("Cat Food", 10, 10, 10, 2));

@@ -6,11 +6,11 @@ package gui;
 	/** The happiness. */	private int happiness;
 	/** The durability. */	private int durability;
 
-	/**	 * 	 * Instantiates a new toy.	 * 	 *	 * 	 * @param name the name	 * 	 * @param price the price	 * 	 * @param happiness the happiness	 *	 * @param name the name	 * @param price the price	 * @param happiness the happiness	 */	public Toy(String name, int price, int happiness){
+	/**	 * 	 * Instantiates a new toy.	 * 	 *	 * 	 * @param name the name	 * 	 * @param price the price	 * 	 * @param happiness the happiness	 *	 * @param name the name	 * @param price the price	 * @param happiness the happiness	 */	public Toy(String name, int price, int happiness, int dur){
 		this.name = name;
 		this.price = price;
 		this.happiness = happiness; //Needs to be between 0-40 40 is like, giving a puppy to your girlfriend.
-		this.durability = 100;
+		this.durability = dur;
 	}	/* (non-Javadoc)	 * @see java.lang.Object#toString()	 */	@Override	public String toString(){		String retstring = name + " " + durability + "%";		return retstring;	}
 	/**	 * 	 * Gets the name.	 * 	 *	 * 	 * @return the name	 *	 * @return the name	 */	public String getName() {
 		return name;

@@ -1,11 +1,11 @@
 package gui;
 /*
-*Do we need any more 
-*Vars for the player?
-*What should the default
-*Amount of money be?
-*ArrayLists are masterrace
-*/
+ *Do we need any more
+ *Vars for the player?
+ *What should the default
+ *Amount of money be?
+ *ArrayLists are masterrace
+ */
 
 import java.util.ArrayList;
 
@@ -15,28 +15,28 @@ import java.util.ArrayList;
  * The Class Player.
  */
 public class Player {
-	
+
 	/** The name. */
 	private String name;
-	
+
 	/** The money. */
 	private int money = 1000; //TODO Add a actual variable with reasoning.
-	
+
 	/** The score. */
 	private int score = 0;
-	
+
 	/** The actions. */
 	private int actions = 2;
-	
+
 	/** The pets. */
 	private ArrayList<Pet> pets = new ArrayList<Pet>();
-	
+
 	/** The toys. */
 	private ArrayList<Toy> toys = new ArrayList<Toy>();
-	
+
 	/** The food. */
 	private ArrayList<Food> food = new ArrayList<Food>();
-	
+
 	/**
 	 * Instantiates a new player.
 	 *
@@ -45,7 +45,7 @@ public class Player {
 	public Player(String n){
 		name = n;
 	}
-	
+
 	/**
 	 * Next day.
 	 */
@@ -53,9 +53,10 @@ public class Player {
 		actions = 2;
 		for(Pet pet: pets){
 			pet.nextDay();
+			score += pet.retScore();
 		}
 	}
-	
+
 	/**
 	 * Prints the inventory.
 	 */
@@ -63,14 +64,14 @@ public class Player {
 		System.out.println("Toys:");
 		for(Toy t : toys){
 			System.out.println(t.getName() + " has " + t.getDurability() + " durability left.");
-			
+
 		}
 		System.out.println("Food:");
 		for(Food f : food){
 			System.out.println(f.getName() + " nutrition: " + f.getNutrion());
 		}
 	}
-	
+
 	/**
 	 * Gets the name.
 	 *
@@ -79,7 +80,7 @@ public class Player {
 	public String getName(){
 		return name;
 	}
-	
+
 	/**
 	 * Gets the money.
 	 *
@@ -88,7 +89,7 @@ public class Player {
 	public int getMoney(){
 		return money;
 	}
-	
+
 	/**
 	 * Sets the money.
 	 *
@@ -97,7 +98,7 @@ public class Player {
 	public void setMoney(int m){
 		money = m;
 	}
-	
+
 	/**
 	 * Gets the pets.
 	 *
@@ -106,7 +107,7 @@ public class Player {
 	public ArrayList<Pet> getPets(){
 		return pets;
 	}
-	
+
 	/**
 	 * Sets the pets.
 	 *
@@ -115,7 +116,7 @@ public class Player {
 	public void setPets(ArrayList<Pet> p){
 		pets = p;
 	}
-	
+
 	/**
 	 * Gets the toys.
 	 *
@@ -124,7 +125,7 @@ public class Player {
 	public ArrayList<Toy> getToys(){
 		return toys;
 	}
-	
+
 	/**
 	 * Sets the toys.
 	 *
@@ -133,7 +134,7 @@ public class Player {
 	public void setToys(ArrayList<Toy> t){
 		this.toys = t;
 	}
-	
+
 	/**
 	 * Gets the food.
 	 *
@@ -142,7 +143,7 @@ public class Player {
 	public ArrayList<Food> getFood(){
 		return food;
 	}
-	
+
 	/**
 	 * Sets the food.
 	 *
@@ -151,7 +152,7 @@ public class Player {
 	public void setFood(ArrayList<Food> f){
 		this.food = f;
 	}
-	
+
 	/**
 	 * Gets the score.
 	 *
@@ -196,7 +197,7 @@ public class Player {
 	public void addFood(Food f) {
 		this.food.add(f);
 	}
-	
+
 	/**
 	 * Adds the toy.
 	 *

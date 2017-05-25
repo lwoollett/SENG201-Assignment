@@ -8,19 +8,19 @@ import java.util.Scanner;
  * The Class Game.
  */
 public class Game {
-	
+
 	/** The store. */
 	Store store = new Store();
-	
+
 	/** The sc. */
 	Scanner sc = new Scanner(System.in);
-	
+
 	/** The pnum. */
 	int pnum = 0;
-	
+
 	/** The players. */
 	static ArrayList<Player> players = new ArrayList<Player>();
-	
+
 	/** The pets. */
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
@@ -37,10 +37,10 @@ public class Game {
 	}
 
 	/**
-	 * Gets the number.
+	 * Keeps Trying for a value between two options
 	 *
-	 * @param ln the ln
-	 * @param hn the hn
+	 * @param ln the lower value
+	 * @param hn the higher value
 	 * @return the number
 	 */
 	public int getNumber(int ln, int hn){
