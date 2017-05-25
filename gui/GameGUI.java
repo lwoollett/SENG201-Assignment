@@ -17,15 +17,36 @@ import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameGUI.
+ */
 public class GameGUI {
+
+	/** The store. */
 	public static Store store = new Store();
+
+	/** The pnum. */
 	int pnum = 0;
+
+	/** The day. */
 	int day = 1;
+
+	/** The currplayer. */
 	Player currplayer;
+
+	/** The pcounter. */
 	public static int pcounter = 0;
+
+	/** The players. */
 	public static ArrayList<Player> players = new ArrayList<Player>();
+
+	/** The pets. */
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
+	/**
+	 * Populatepets.
+	 */
 	private void populatepets(){
 		pets.add(new Cat("UnNamed"));
 		pets.add(new Cow("UnNamed"));
@@ -35,10 +56,13 @@ public class GameGUI {
 		pets.add(new Velociraptor("UnNamed"));
 	}
 
+	/** The frm virtual pets. */
 	private JFrame frmVirtualPets;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -294,16 +318,11 @@ public class GameGUI {
 
 					int result = JOptionPane.showConfirmDialog(null, things, "Sweg xd", JOptionPane.PLAIN_MESSAGE);
 					if (result == JOptionPane.OK_OPTION) {
-						System.out.println(selectedPet.getSelectedIndex());
-						System.out.println(selectedPet.getSelectedIndex());
 						Pet setPet = pets.get(selectedPet.getSelectedIndex());
 						Food setFood = foods.get(selectedFood.getSelectedIndex());
 						setPet.feed(setFood);
-						foods.remove(selectedFood);
+						foods.remove(setFood);
 						currplayer.setFood(foods);
-						for(Food f : currplayer.getFood()){
-							System.out.println(f.getName());
-						}
 					}
 				}
 			}

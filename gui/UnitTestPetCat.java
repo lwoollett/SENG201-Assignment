@@ -1,17 +1,34 @@
 package gui;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UnitTestPetCat.
+ */
 public class UnitTestPetCat {
 	
+	/**
+	 * Prints the confirm work.
+	 *
+	 * @param methodName the method name
+	 */
 	public void printConfirmWork(String methodName)
 	{
 		System.out.println(String.format("%-15s Works.", methodName));
 	}
 	
+	/**
+	 * Prints the deny work.
+	 *
+	 * @param methodName the method name
+	 */
 	public void printDenyWork(String methodName)
 	{
 		System.out.println(String.format("%-15s Does not work.", methodName));
 	}
 
+	/**
+	 * Test pet status.
+	 */
 	public void testPetStatus ()
 	{
 		Cat cat = new Cat("Cat");
@@ -115,6 +132,11 @@ public class UnitTestPetCat {
 	
 	
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args){
 		UnitTestPetCat tester = new UnitTestPetCat();
 		tester.testPetStatus();
