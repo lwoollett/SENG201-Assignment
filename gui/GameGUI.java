@@ -594,6 +594,13 @@ public class GameGUI {
 		btnEndDay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
+				if(day == maxdays && pcounter == players.size()-1){
+					String gamestring = "Game Over. Player Scores:\n";
+					for(Player p:players){
+						gamestring += "\n Player: " + p.getName() + "'s Score: " + p.getScore();
+					}
+					JOptionPane.showMessageDialog(frmVirtualPets, gamestring);
+				}
 				pcounter += 1;
 				if(pcounter > players.size()-1){
 					pcounter = 0;
