@@ -104,6 +104,9 @@ public class Food {
 	 */
 	public void setValue(int v){
 		value = v;
+		if(value < 0){
+			value = 1;
+		}
 	}
 
 	/**
@@ -111,8 +114,13 @@ public class Food {
 	 *
 	 * @param v the new nutrion
 	 */
-	public void setNutrion(int v){
+	public void setNutrition(int v){
 		nutrition = v;
+		if(nutrition < 0){
+			nutrition = 0;
+		}else if(nutrition > 100){
+			nutrition = 100;
+		}
 	}
 
 	/**
@@ -121,7 +129,12 @@ public class Food {
 	 * @param v the new tastiness
 	 */
 	public void setTastiness(int v){
-		mealsize = v;
+		tastiness = v;
+		if(tastiness < 0){
+			tastiness = 0;
+		}else if(tastiness > 100){
+			tastiness = 100;
+		}
 	}
 
 	/**
@@ -131,6 +144,11 @@ public class Food {
 	 */
 	public void setMeal(int v){
 		mealsize = v;
+		if(mealsize < 0){
+			mealsize = 0;
+		}else if(mealsize > 4){
+			mealsize = 4;
+		}
 	}
 
 

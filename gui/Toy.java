@@ -22,7 +22,7 @@ package gui;
 		return price;
 	}
 	/**	 * Set the price	 * @param price the new price	 */	public void setPrice(int price) {
-		this.price = price;
+		this.price = price;		if(this.price < 0){			this.price = 1;		}
 	}
 	/**	 * Geter for happiness. You cant get happiness.  Only pain and assignments.	 * @return the happiness	 */	public int getHappiness() {
 		return happiness;
