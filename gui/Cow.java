@@ -1,15 +1,21 @@
 package gui;
 
-
 /**
- * The Cow Class.
+ * The Cow class.
+ * Cow is one of the pets with the values of:
+ * HungerNeed: 6
+ * Roughness: 20
+ * Sleepiness: 1
+ * Favourite Food: Grass
+ * Favourite Toy: Mud
  */
+
 public class Cow extends Pet{
 
 	/**
 	 * Instantiates a new cow.
 	 *
-	 * @param Name: The Pet's Name
+	 * @param name is The Pet's Name
 	 */
 	public Cow(String name) {
 		super(name);

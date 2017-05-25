@@ -1,15 +1,21 @@
 package gui;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Velociraptor.
+ * The Velociraptor class.
+ *  is one of the pets with the values of:
+ * HungerNeed: 10
+ * Roughness: 70
+ * Sleepiness: 0
+ * Favourite Food: Human
+ * Favourite Toy: Human
  */
+
 public class Velociraptor extends Pet{
 
 	/**
-	 * Instantiates a new velociraptor.
+	 * Instantiates a new FREAKING velociraptor.
 	 *
-	 * @param name the name
+	 * @param name the name of this awesome creature
 	 */
 	public Velociraptor(String name) {
 		super(name);

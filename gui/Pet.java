@@ -1,4 +1,4 @@
-package gui;/** * The Pet Class */public class Pet {	//Normal Vars
+package gui;/** * The Pet Class. * All of the indivual pets inherit from this class. * We have this so we can have everything in the same lists. */public class Pet {	//Normal Vars
 	private String petname;	private int hunger; //0-100	private int tiredness; //0-100	private int mood; //1-4? Idk Fammmmmmm
 	private boolean alive = true;	private boolean issick = false;
 	private int toiletneed; //1-100
@@ -64,9 +64,9 @@ package gui;/** * The Pet Class */public class Pet {	//Normal Vars
 	}
 	/**	 * sets mood	 * @param mood the new mood	 */	public void setMood(int mood) {		this.mood = mood;		if(this.mood < 0){			this.mood = 0;		}else if(this.mood > 4){			this.mood = 4;		}	}
 	/**	 * checks if pet is alive	 *	 * @return Pets alive status	 */	public boolean isAlive() {		return alive;	}
-	/**	 * sets if pet is alive or not	 * @param bool true or false	 */	public void setAlive(boolean alive) {
+	/**	 * sets if pet is alive or not	 * @param alive is a bool true or false	 */	public void setAlive(boolean alive) {
 		this.alive = alive;
-	}	/**	 * returns sickness	 *	 * @return the sickness	 */	public boolean getSickness(){		return issick;	}	/**	 * sets if the pet is sick or not	 * @param bool true / false	 */	public void setSickness(boolean sickness){		issick = sickness;	}
+	}	/**	 * returns sickness	 *	 * @return the sickness	 */	public boolean getSickness(){		return issick;	}	/**	 * sets if the pet is sick or not	 * @param sickness bool true / false	 */	public void setSickness(boolean sickness){		issick = sickness;	}
 	/**	 * Gets the toiletneed.	 *	 * @return the toiletneed	 */	public int getToiletneed() {
 		return toiletneed;
 	}

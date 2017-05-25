@@ -10,8 +10,8 @@ public class Game {
 	Store store = new Store();
 	Scanner sc = new Scanner(System.in);
 	int pnum = 0;
-	static ArrayList<Player> players = new ArrayList<Player>();
-	ArrayList<Pet> pets = new ArrayList<Pet>();
+	static ArrayList<Player> players = new ArrayList<>();
+	ArrayList<Pet> pets = new ArrayList<>();
 
 	/**
 	 * Populate the pets arraylist
@@ -83,7 +83,7 @@ public class Game {
 	 */
 	private void getPets(){
 		for(Player p : players){
-			ArrayList<Pet> currentpets = new ArrayList<Pet>();
+			ArrayList<Pet> currentpets = new ArrayList<>();
 
 			System.out.println("How many pets for " + p.getName() + ": ");
 			int petnum = getNumber(1,3);

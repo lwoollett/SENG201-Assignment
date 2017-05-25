@@ -10,9 +10,9 @@ public class Player {
 	private int money = 1000; // Players Money.
 	private int score = 0;
 	private int actions = 2;
-	private ArrayList<Pet> pets = new ArrayList<Pet>();
-	private ArrayList<Toy> toys = new ArrayList<Toy>();
-	private ArrayList<Food> food = new ArrayList<Food>();
+	private ArrayList<Pet> pets = new ArrayList<>();
+	private ArrayList<Toy> toys = new ArrayList<>();
+	private ArrayList<Food> food = new ArrayList<>();
 
 	/**
 	 * Instantiates a new player.

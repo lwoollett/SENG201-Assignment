@@ -46,10 +46,10 @@ public class GameGUI {
 	public static int pcounter = 0;
 
 	/** The players. */
-	public static ArrayList<Player> players = new ArrayList<Player>();
+	public static ArrayList<Player> players = new ArrayList<>();
 
 	/** The pets. */
-	ArrayList<Pet> pets = new ArrayList<Pet>();
+	ArrayList<Pet> pets = new ArrayList<>();
 
 	/**
 	 * Populates the pet arraylist.
@@ -141,7 +141,7 @@ public class GameGUI {
 		//The fuck is this spaghetti code??
 		//TODO Make into actual code
 		Object[] petobjects = {"Cat", "Cow", "Dog", "Rabbit", "Rat", "Velociraptor"};
-		ArrayList<String> petstrings = new ArrayList<String>();
+		ArrayList<String> petstrings = new ArrayList<>();
 		petstrings.add("Cat");petstrings.add("Cow");petstrings.add("Dog");petstrings.add("Rabbit");petstrings.add("Rat");petstrings.add("Velociraptor");
 
 		for(int i = 1; i < pnum + 1; i++){
@@ -287,17 +287,17 @@ public class GameGUI {
 		JLabel lblDaysPassed = new JLabel("Days Passed");
 		status_panel.add(lblDaysPassed);
 
-		DefaultListModel<String> toys_model = new DefaultListModel<String>();
+		DefaultListModel<String> toys_model = new DefaultListModel<>();
 		toys_model.addElement("Toy: Durability");
 
-		DefaultListModel<String> food_model = new DefaultListModel<String>();
+		DefaultListModel<String> food_model = new DefaultListModel<>();
 		food_model.addElement("Food: Nutrition");
 
 
-		JList<String> list_toys = new JList<String>(toys_model);
+		JList<String> list_toys = new JList<>(toys_model);
 		inventory_panel.add(list_toys);
 
-		JList<String> list_food = new JList<String>(food_model);
+		JList<String> list_food = new JList<>(food_model);
 		inventory_panel.add(list_food);
 
 		JButton btnFeed = new JButton("Feed");
@@ -312,14 +312,14 @@ public class GameGUI {
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Food> foods = currplayer.getFood();
 
-					JComboBox<String> selectedPet = new JComboBox<String>();
+					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
 							selectedPet.addItem(p.getPetname());
 						}
 					}
 
-					JComboBox<String> selectedFood = new JComboBox<String>();
+					JComboBox<String> selectedFood = new JComboBox<>();
 					for(Food f:currplayer.getFood()){
 						selectedFood.addItem(f.getName());
 					}
@@ -374,7 +374,7 @@ public class GameGUI {
 				while(running){
 					ArrayList<Food> foods = store.getFoods();
 					int c = 0;
-					JComboBox<String> selectedFood = new JComboBox<String>();
+					JComboBox<String> selectedFood = new JComboBox<>();
 					for(Food f: foods){
 						selectedFood.addItem(f.getName() + ": $" + f.getValue() + " Stock: " + store.getFoodamounts()[c]
 								+ " Nutrition: " + f.getNutrition() + " Meal Size: " + f.getMeal());
@@ -419,7 +419,7 @@ public class GameGUI {
 				boolean running = true;
 				while(running){
 					ArrayList<Toy> toys = store.getToys();
-					JComboBox<String> selectedToy = new JComboBox<String>();
+					JComboBox<String> selectedToy = new JComboBox<>();
 					int c = 0;
 					for(Toy t : toys){
 						selectedToy.addItem(t.getName() + ": $" + t.getPrice() + " Stock: " + store.getToyamounts()[c] +
@@ -468,14 +468,14 @@ public class GameGUI {
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Toy> toys = currplayer.getToys();
 
-					JComboBox<String> selectedPet = new JComboBox<String>();
+					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
 							selectedPet.addItem(p.getPetname());
 						}
 					}
 
-					JComboBox<String> selectedToy = new JComboBox<String>();
+					JComboBox<String> selectedToy = new JComboBox<>();
 					for(Toy t: toys){
 						selectedToy.addItem(t.getName());
 					}
@@ -536,7 +536,7 @@ public class GameGUI {
 					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
-					JComboBox<String> selectedPet = new JComboBox<String>();
+					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
 							selectedPet.addItem(p.getPetname());
@@ -580,7 +580,7 @@ public class GameGUI {
 					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
-					JComboBox<String> selectedPet = new JComboBox<String>();
+					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
 							selectedPet.addItem(p.getPetname());

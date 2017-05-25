@@ -27,7 +27,7 @@ public class TestPlayer {
 	@Test
 	public void testNextDay() {
 		Player testPlayer = new Player("Test Player 1");
-		ArrayList<Pet> testPetList = new ArrayList<Pet>();
+		ArrayList<Pet> testPetList = new ArrayList<>();
 		testPetList.add(new Cat("TestCat"));
 		testPlayer.setPets(testPetList);
 		testPlayer.nextDay();
@@ -43,7 +43,7 @@ public class TestPlayer {
 	@Test
 	public void testSetPets() {
 		Player testPlayer = new Player("Test Player 1");
-		ArrayList<Pet> testPetList = new ArrayList<Pet>();
+		ArrayList<Pet> testPetList = new ArrayList<>();
 		testPetList.add(new Cat("TestCat"));
 		testPlayer.setPets(testPetList);
 		assertEquals(testPetList, testPlayer.getPets());

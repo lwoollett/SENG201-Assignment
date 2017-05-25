@@ -8,7 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * The Unit Test Class.
  */
 @RunWith(Suite.class)
-@SuiteClasses({ TestPet.class, TestPlayer.class })
+@SuiteClasses({TestPet.class, TestPlayer.class, TestToy.class})
 public class AllTests {
 
 }

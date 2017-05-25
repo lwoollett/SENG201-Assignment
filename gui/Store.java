@@ -3,29 +3,16 @@ package gui;
 import java.util.ArrayList;
 import java.util.Random;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Store.
+ * The store class.
+ * This class houses our store where we buy food and toys.
  */
 public class Store{
-
-	/** The rand. */
 	private Random rand = new Random();
-
-	/** The toys. */
-	private ArrayList<Toy> toys = new ArrayList<Toy>();
-
-	/** The foods. */
-	private ArrayList<Food> foods = new ArrayList<Food>();
-
-	/** The foodamounts. */
+	private ArrayList<Toy> toys = new ArrayList<>();
+	private ArrayList<Food> foods = new ArrayList<>();
 	private int[] foodamounts = {69, 69, 999999, 1, 12, 4};
-
-	/** The toyamounts. */
 	private int[] toyamounts = {5, 2, 12, 11, 42, 13};
-	/*
-	 * Food Names
-	 */
 
 	/**
 	 * Instantiates a new store.
@@ -33,7 +20,7 @@ public class Store{
 	public Store(){
 		//Toys name, price, happiness, durability
 		toys.add(new Toy("Bone", 10, 1, 10));
-		toys.add(new Toy("Mud", 0, 0, 1000));
+		toys.add(new Toy("Mud", 0, 1, 1000));
 		toys.add(new Toy("Catnip", 30, 100, 100));
 		toys.add(new Toy("Human", 10, 10, 5));
 		toys.add(new Toy("Hutch", 30, 1, 100));
@@ -48,18 +35,18 @@ public class Store{
 	}
 
 	/**
-	 * Gets the foodamounts.
+	 * Gets the amounts of each food..
 	 *
-	 * @return the foodamounts
+	 * @return the amounts of each food.
 	 */
 	public int[] getFoodamounts() {
 		return foodamounts;
 	}
 
 	/**
-	 * Gets the toyamounts.
+	 * Gets the amounts of each toy.
 	 *
-	 * @return the toyamounts
+	 * @return the amounts of each toy.
 	 */
 	public int[] getToyamounts() {
 
@@ -67,18 +54,18 @@ public class Store{
 	}
 
 	/**
-	 * Gets the toys.
+	 * Gets the actual toy objects.
 	 *
-	 * @return the toys
+	 * @return An arraylist of toys.
 	 */
 	public ArrayList<Toy> getToys() {
 		return toys;
 	}
 
 	/**
-	 * Gets the foods.
+	 * Gets the actual food objects as an arraylist.
 	 *
-	 * @return the foods
+	 * @return an arraylist of food
 	 */
 	public ArrayList<Food> getFoods() {
 		return foods;
@@ -87,7 +74,7 @@ public class Store{
 	/**
 	 * Sets the toyamounts.
 	 *
-	 * @param toyamounts the new toyamounts
+	 * @param toyamounts, an int[] which is the new toyamounts
 	 */
 	public void setToyamounts(int[] toyamounts) {
 		this.toyamounts = toyamounts;
@@ -96,7 +83,7 @@ public class Store{
 	/**
 	 * Sets the foodamounts.
 	 *
-	 * @param foodamounts the new foodamounts
+	 * @param foodamounts, an int[] which is the new foodamounts
 	 */
 	public void setFoodamounts(int[] foodamounts) {
 		this.foodamounts = foodamounts;
@@ -104,6 +91,7 @@ public class Store{
 
 	/**
 	 * Next day.
+	 * Refills stock
 	 */
 	public void nextDay() {
 		for(int i=0; i < foodamounts.length; i++){

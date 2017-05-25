@@ -1,15 +1,15 @@
 package gui;
 
-// TODO: Auto-generated Javadoc
+
 /**
- * The Class Rat.
+ * The Rat Class
  */
 public class Rat extends Pet{
 
 	/**
 	 * Instantiates a new rat.
 	 *
-	 * @param name the name
+	 * @param name the name for it
 	 */
 	public Rat(String name) {
 		super(name);

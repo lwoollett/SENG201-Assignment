@@ -4,14 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class TestPet.
+ * Junit Testing
  */
 public class TestPet {
 
 	/**
-	 * Test feed from 50.
+	 * Test feed from 50 hunger.
 	 */
 	@Test
 	public void testFeedFrom50() {
@@ -19,36 +18,36 @@ public class TestPet {
 		cat.setHunger(50);
 		cat.setToiletneed(50);
 		cat.feed(new Food("TestFood", 5,5,5,5));
-		assertEquals(65, cat.getHunger());
+		assertEquals(55, cat.getHunger());
 		assertEquals(0, cat.getToiletneed());
 	}
 
 	/**
-	 * Test feed from 90.
+	 * Test feed from 90 hunger.
 	 */
 	@Test
 	public void testFeedFrom90() {
 		Cat cat = new Cat("Cat");
 		cat.setHunger(90);
 		cat.setToiletneed(50);
-		cat.feed(new Food("TestFood", 5,5,5,5));
+		cat.feed(new Food("TestFood", 5,10,5,5));
 		assertEquals(100, cat.getHunger());
 		assertEquals(0, cat.getToiletneed());
 	}
 
 	/**
-	 * Test play from 2.
+	 * Test play from 2 mood.
 	 */
 	@Test
 	public void testPlayFrom2() {
 		Cat cat = new Cat("Cat");
 		cat.setMood(2);
 		cat.play(new Toy("testToy", 50, 10, 0));
-		assertEquals(3, cat.getMood());
+		assertEquals(4, cat.getMood());
 	}
 
 	/**
-	 * Test fav food.
+	 * Test favourite food.
 	 */
 	@Test
 	public void TestFavFood(){
@@ -60,7 +59,7 @@ public class TestPet {
 	}
 
 	/**
-	 * Test play from 4.
+	 * Test play from 4 mood.
 	 */
 	@Test
 	public void testPlayFrom4() {
@@ -93,7 +92,7 @@ public class TestPet {
 	}
 
 	/**
-	 * Test next day from full.
+	 * Test going to the next day from full stats.
 	 */
 	@Test
 	public void testNextDayFromFull() {
@@ -107,6 +106,37 @@ public class TestPet {
 		assertEquals(80,cat.getToiletneed());
 	}
 
+	/**
+	 * Test going to the next day from empty stats
+	 */
+	@Test
+	public void testNextDayFromEmpty() {
+		Cat cat = new Cat("Cat");
+		cat.setToiletneed(0);
+		cat.setHunger(0);
+		cat.setTiredness(0);
+		cat.nextDay();
+		assertEquals(0,cat.getHunger());
+		assertEquals(0,cat.getTiredness());
+		assertEquals(0,cat.getToiletneed());
+		assertEquals(false, cat.isAlive());
+	}
+
+	/**
+	 * Test going to the next day from negative stats
+	 */
+	@Test
+	public void testNextDayFromNeg() {
+		Cat cat = new Cat("Cat");
+		cat.setToiletneed(-10);
+		cat.setHunger(-200);
+		cat.setTiredness(-0);
+		cat.nextDay();
+		assertEquals(0,cat.getHunger());
+		assertEquals(0,cat.getTiredness());
+		assertEquals(0,cat.getToiletneed());
+		assertEquals(false, cat.isAlive());
+	}
 
 
 }

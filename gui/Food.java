@@ -100,7 +100,7 @@ public class Food {
 	/**
 	 * Sets the value.
 	 *
-	 * @param v the new value >> $$
+	 * @param v the new value in $$
 	 */
 	public void setValue(int v){
 		value = v;

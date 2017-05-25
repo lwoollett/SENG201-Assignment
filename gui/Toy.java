@@ -6,35 +6,35 @@ package gui;
 	/** The happiness. */	private int happiness;
 	/** The durability. */	private int durability;
 
-	/**	 * 	 * 	 * 	 * Instantiates a new toy.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @param name the name	 * 	 * 	 * 	 * @param price the price	 * 	 * 	 * 	 * @param happiness the happiness	 * 	 * 	 *	 * 	 * 	 * @param name the name	 * 	 * 	 * @param price the price	 * 	 * 	 * @param happiness the happiness	 * 	 *	 * 	 * @param name the name	 * 	 * @param price the price	 * 	 * @param happiness the happiness	 * 	 * @param dur the dur	 *	 * @param name the name	 * @param price the price	 * @param happiness the happiness	 * @param dur the dur	 */	public Toy(String name, int price, int happiness, int dur){
+	/**	 * Makes a new toy :o	 * @param name the name of the toy	 * @param price the price $$	 * @param happiness the happiness the toy adds	 * @param dur the durability of the toy	 */	public Toy(String name, int price, int happiness, int dur){
 		this.name = name;
 		this.price = price;
-		this.happiness = happiness; //Needs to be between 0-40 40 is like, giving a puppy to your girlfriend.
+		this.happiness = happiness;
 		this.durability = dur;
 	}	/* (non-Javadoc)	 * @see java.lang.Object#toString()	 */	@Override	public String toString(){		String retstring = name + " " + durability + "%";		return retstring;	}
-	/**	 * 	 * 	 * 	 * Gets the name.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @return the name	 * 	 * 	 *	 * 	 * 	 * @return the name	 * 	 *	 * 	 * @return the name	 *	 * @return the name	 */	public String getName() {
+	/**	 * getter for the name	 * @return the name	 */	public String getName() {
 		return name;
 	}
-	/**	 * 	 * 	 * 	 * Sets the name.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @param name the new name	 * 	 * 	 *	 * 	 * 	 * @param name the new name	 * 	 *	 * 	 * @param name the new name	 *	 * @param name the new name	 */	public void setName(String name) {
+	/**	 * Setter for the name	 * @param name the new name	 */	public void setName(String name) {
 		this.name = name;
 	}
-	/**	 * 	 * 	 * 	 * Gets the price.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @return the price	 * 	 * 	 *	 * 	 * 	 * @return the price	 * 	 *	 * 	 * @return the price	 *	 * @return the price	 */	public int getPrice() {
+	/**	 * Getter for the price	 * @return the price	 */	public int getPrice() {
 		return price;
 	}
-	/**	 * 	 * 	 * 	 * Sets the price.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @param price the new price	 * 	 * 	 *	 * 	 * 	 * @param price the new price	 * 	 *	 * 	 * @param price the new price	 *	 * @param price the new price	 */	public void setPrice(int price) {
+	/**	 * Set the price	 * @param price the new price	 */	public void setPrice(int price) {
 		this.price = price;
 	}
-	/**	 * 	 * 	 * 	 * Gets the happiness.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @return the happiness	 * 	 * 	 *	 * 	 * 	 * @return the happiness	 * 	 *	 * 	 * @return the happiness	 *	 * @return the happiness	 */	public int getHappiness() {
+	/**	 * Geter for happiness. You cant get happiness.  Only pain and assignments.	 * @return the happiness	 */	public int getHappiness() {
 		return happiness;
 	}
-	/**	 * 	 * 	 * 	 * Sets the happiness.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @param happiness the new happiness	 * 	 * 	 *	 * 	 * 	 * @param happiness the new happiness	 * 	 *	 * 	 * @param happiness the new happiness	 *	 * @param happiness the new happiness	 */	public void setHappiness(int happiness) {
-		this.happiness = happiness;
+	/**	 * Set the happiness given from the toy	 * @param happiness the new happiness	 */	public void setHappiness(int happiness) {
+		this.happiness = happiness;		if(this.happiness > 100){			this.happiness = 100;		}else if(this.happiness < 0){			this.happiness = 0;		}
 	}
-	/**	 * 	 * 	 * 	 * Gets the durability.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @return the durability	 * 	 * 	 *	 * 	 * 	 * @return the durability	 * 	 *	 * 	 * @return the durability	 *	 * @return the durability	 */	public int getDurability() {
+	/**	 * Get the remaining durability of the toy	 * @return the durability	 */	public int getDurability() {
 		return durability;
 	}
-	/**	 * 	 * 	 * 	 * Sets the durability.	 * 	 * 	 * 	 *	 * 	 * 	 * 	 * @param durability the new durability	 * 	 * 	 *	 * 	 * 	 * @param durability the new durability	 * 	 *	 * 	 * @param durability the new durability	 *	 * @param durability the new durability	 */	public void setDurability(int durability) {
-		this.durability = durability;
+	/**	 * Set the durability of the toy once it has been used	 * @param durability the new durability	 */	public void setDurability(int durability) {
+		this.durability = durability;		if(this.durability > 100){			this.durability = 100;		}else if(this.durability < 0){			this.durability = 0;		}
 	}
 
 }
