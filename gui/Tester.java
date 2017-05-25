@@ -2,28 +2,45 @@ package gui;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Tester.
+ */
 public class Tester {
-		
+
+	/**
+	 * Prints the confirm work.
+	 *
+	 * @param methodName the method name
+	 */
 	public void printConfirmWork(String methodName)
 	{
 		System.out.println(String.format("%-20s Works as expected.", methodName));
 	}
-	
+
+	/**
+	 * Prints the deny work.
+	 *
+	 * @param methodName the method name
+	 */
 	public void printDenyWork(String methodName)
 	{
 		System.out.println(String.format("%-20s Does not work as expected.", methodName));
 	}
-	
-	
-	/*
-	  
-	 * Testing Pets Methods
-	 
+
+
+	/**
+	 * Test pet status.
 	 */
-		public void testPetStatus ()
+	/*
+
+	 * Testing Pets Methods
+
+	 */
+	public void testPetStatus ()
 	{
 		Cat cat = new Cat("Cat");
-		
+
 		//Testing feed
 		cat.setHunger(50);
 		cat.setToiletneed(50);
@@ -35,7 +52,7 @@ public class Tester {
 		{
 			printDenyWork("feed From 50");
 		}
-		
+
 		cat.feed(new Food("TestFood", 5,5,5,5));
 		if (80 == cat.getHunger() && 0 == cat.getToiletneed()){
 			printConfirmWork("feed From 65");
@@ -45,7 +62,7 @@ public class Tester {
 			printDenyWork("feed From 65");
 			System.out.println(cat.getToiletneed());
 		}
-		
+
 		cat.setHunger(90);
 		cat.feed(new Food("TestFood", 5,5,5,5));
 		if (100 == cat.getHunger() && 0 == cat.getToiletneed()){
@@ -56,11 +73,11 @@ public class Tester {
 			printDenyWork("feed From 90");
 			System.out.println(cat.getToiletneed());
 		}
-		
+
 		//Testing play
 		cat.setMood(2);
 		cat.play(new Toy("testToy", 50, 10));
-		
+
 		if (3 == cat.getMood()){
 			printConfirmWork("play From 2");
 		}
@@ -68,10 +85,10 @@ public class Tester {
 		{
 			printDenyWork("play From 2");
 		}
-		
+
 		cat.setMood(4);
 		cat.play(new Toy("testToy", 50, 10));
-		
+
 		if (4 == cat.getMood()){
 			printConfirmWork("play From 4");
 		}
@@ -79,8 +96,8 @@ public class Tester {
 		{
 			printDenyWork("play From 4");
 		}
-		
-		
+
+
 		//Testing sleep
 		cat.setTiredness(50);
 		cat.sleep();
@@ -91,7 +108,7 @@ public class Tester {
 		{
 			printDenyWork("sleep");
 		}
-		
+
 		//Testing goToToilet
 		cat.setToiletneed(50);
 		cat.goToToilet();
@@ -102,7 +119,7 @@ public class Tester {
 		{
 			printDenyWork("goToToilet");
 		}
-		
+
 		//testing nextDay
 		cat.setToiletneed(100);
 		cat.setHunger(100);
@@ -116,15 +133,18 @@ public class Tester {
 		{
 			printDenyWork("nextDay");
 		}
-		
+
 	}
-	
+
 	/*
-	  
+
 	 * Testing Players
-	 
+
 	 */
-		
+
+	/**
+	 * Testplayers.
+	 */
 	private void testplayers(){
 		Player testPlayer = new Player("Test Player 1");
 		if(testPlayer.getName() == "Test Player 1" && testPlayer.getMoney() == 1000){
@@ -133,7 +153,7 @@ public class Tester {
 		else{
 			printDenyWork("player Initialise");
 		}
-		
+
 		//Testing giving players pets
 		ArrayList<Pet> testPetList = new ArrayList<Pet>();
 		testPetList.add(new Cat("TestCat"));
@@ -144,7 +164,7 @@ public class Tester {
 		else{
 			printDenyWork("setPets");
 		}
-		
+
 		//Testing nextDay
 		testPlayer.nextDay();
 		for(Pet pet: testPetList){
@@ -155,21 +175,26 @@ public class Tester {
 		}
 		else{
 			printDenyWork("nextDay");
-			}
 		}
-	
-	
+	}
 
-	
+
+
+
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args){
 		Tester tester = new Tester();
-		
+
 		System.out.println("Player Method Testing:");
 		tester.testplayers();
-		
+
 		System.out.println("\nPet Method Testing:");
 		tester.testPetStatus();
-		
+
 		System.out.println("\nStore Method Testing:");
 		tester.testPetStatus();
 	}

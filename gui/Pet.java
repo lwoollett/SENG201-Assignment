@@ -1,136 +1,123 @@
 package gui;
-public class Pet {
-	//Normal Vars
+// TODO: Auto-generated Javadoc/** * The Class Pet. */public class Pet {
+	/** The petname. */	//Normal Vars
 	private String petname;
-	private int hunger; //0-100
-	private int tiredness; //0-100
-	private int mood; //1-4? Idk Fammmmmmm
-	private boolean alive = true;
-	private int toiletneed; //1-100
-	private int weight; //ddwdwdawdawd
-	//Vars That Differ By Species
+	/** The hunger. */	private int hunger; //0-100
+	/** The tiredness. */	private int tiredness; //0-100
+	/** The mood. */	private int mood; //1-4? Idk Fammmmmmm
+	/** The alive. */	private boolean alive = true;
+	/** The toiletneed. */	private int toiletneed; //1-100
+	/** The weight. */	private int weight; //ddwdwdawdawd
+	/** The sleepiness. */	//Vars That Differ By Species
 	private int sleepiness;
-	private double hungerNeed;
-	private int roughness;
-	private String favtoy;
-	private String favfood;
-	public Pet(String name){
+	/** The hunger need. */	private double hungerNeed;
+	/** The roughness. */	private int roughness;
+	/** The favtoy. */	private String favtoy;
+	/** The favfood. */	private String favfood;
+	/**	 * Instantiates a new pet.	 *	 * @param name the name	 */	public Pet(String name){
 		petname = name;
 		hunger = 100;
 		tiredness = 100;
 		mood = 4;
 		toiletneed = 100;
-		weight = 50;
+		weight = 100;
 	}
 
-	public String printStatus(){		String retstring = "";		retstring += "Pet Name: " + petname + "\n\n";
-		retstring += "Hunger: " + hunger + "\n";
-		retstring += "Tiredness: " + tiredness + "\n";
-		retstring += "Mood: " + mood + "\n";
-		retstring += "Alive: " + alive + "\n";
-		retstring += "Toilet Need: " + toiletneed + "\n";
-		retstring += "Weight: " + weight + "\n";
-		retstring += "Sleepiness: " + sleepiness + "\n";
-		retstring += "Need For Food: " + hungerNeed + "\n";
-		retstring += "Roughness: " + roughness + "\n";
-		retstring += "Favourite Toy: " + favtoy + "\n";
-		retstring += "Favourite Food: " + favfood + "\n";		return retstring;
-	}
-	/*	 *Pet Status Updaters	 */
-	public void feed(Food food){
+	/**	 * Prints the status.	 *	 * @return the string	 */	public String printStatus(){		String retstring = "";		if(alive){			retstring += "Pet Name: " + petname + "\n\n";			retstring += "Hunger: " + hunger + "\n";			retstring += "Tiredness: " + tiredness + "\n";			retstring += "Mood: " + mood + "\n";			retstring += "Alive: " + alive + "\n";			retstring += "Toilet Need: " + toiletneed + "\n";			retstring += "Weight: " + weight + "\n";			retstring += "Sleepiness: " + sleepiness + "\n";			retstring += "Need For Food: " + hungerNeed + "\n";			retstring += "Roughness: " + roughness + "\n";			retstring += "Favourite Toy: " + favtoy + "\n";			retstring += "Favourite Food: " + favfood + "\n";		}else{			retstring = "Pet\nIs\nDead\nYou\nAre\nA\nHorrible\nOwner.";		}		return retstring;
+	}	public int retScore(){		int petScore = 0;		if(alive){			petScore += hunger;			petScore += tiredness;			petScore += mood * 10;			petScore += toiletneed;			petScore += weight;			return petScore;		}else{			return petScore;		}	}	/**	 * Feed.	 *	 * @param food the food	 */	public void feed(Food food){		if(food.getName().equals(favfood)){			mood += 1;			if(mood > 4){				mood = 4;			}		}
 		double io = food.getNutrion() * hungerNeed;
 		hunger += io;
 		if(hunger > 100){
 			hunger = 100;
-		}
+		}		weight += food.getMeal() * 10;		if(weight > 150){			mood -= 2;		}else if(weight < 50){			mood -= 2;		}
 		toiletneed -= food.getMeal() * 10;		if(toiletneed < 0){			toiletneed = 0;		}
 	}
-	public void play(Toy toy){
+	/**	 * Play.	 *	 * @param toy the toy	 */	public void play(Toy toy){
 		mood += toy.getHappiness() / 10;		if(mood > 4){			mood = 4;		}		else if(mood < 1){			mood = 1;		}
 	}
-	public void sleep(){
+	/**	 * Sleep.	 */	public void sleep(){
 		tiredness = 100;
 	}
 
-	public void goToToilet(){
-		toiletneed = 100;
+	/**	 * Go to toilet.	 */	public void goToToilet(){
+		toiletneed += 100;
 	}
-	public void nextDay(){
+	/**	 * Next day.	 */	public void nextDay(){
 		hunger -= 5 * hungerNeed;
 		tiredness -= 5 * sleepiness;
-		toiletneed -= 20;
+		toiletneed -= 20;		if(hunger <= 0){			hunger = 0;			alive = false;			mood = 0;		}if(tiredness <= 0){			tiredness = 0;			mood = 0;		}if(toiletneed <= 0){			toiletneed = 0;			mood = 0;		}
 	}
 	/*
 	 * Getters And Setters
 	 */
-	public String getPetname() {
+	/**	 * Gets the petname.	 *	 * @return the petname	 */	public String getPetname() {
 		return petname;
 	}
-	public int getHunger() {
+	/**	 * Gets the hunger.	 *	 * @return the hunger	 */	public int getHunger() {
 		return hunger;
 	}
-	public void setHunger(int hunger) {
+	/**	 * Sets the hunger.	 *	 * @param hunger the new hunger	 */	public void setHunger(int hunger) {
 		this.hunger = hunger;
 	}
-	public int getTiredness() {
+	/**	 * Gets the tiredness.	 *	 * @return the tiredness	 */	public int getTiredness() {
 		return tiredness;
 	}
-	public void setTiredness(int tiredness) {
+	/**	 * Sets the tiredness.	 *	 * @param tiredness the new tiredness	 */	public void setTiredness(int tiredness) {
 		this.tiredness = tiredness;
 	}
-	public int getMood() {
+	/**	 * Gets the mood.	 *	 * @return the mood	 */	public int getMood() {
 		return mood;
 	}
-	public void setMood(int mood) {		this.mood = mood;	}
-	public boolean isAlive() {		return alive;	}
-	public void setAlive(boolean alive) {
+	/**	 * Sets the mood.	 *	 * @param mood the new mood	 */	public void setMood(int mood) {		this.mood = mood;	}
+	/**	 * Checks if is alive.	 *	 * @return true, if is alive	 */	public boolean isAlive() {		return alive;	}
+	/**	 * Sets the alive.	 *	 * @param alive the new alive	 */	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-	public int getToiletneed() {
+	/**	 * Gets the toiletneed.	 *	 * @return the toiletneed	 */	public int getToiletneed() {
 		return toiletneed;
 	}
-	public void setToiletneed(int toiletneed) {
+	/**	 * Sets the toiletneed.	 *	 * @param toiletneed the new toiletneed	 */	public void setToiletneed(int toiletneed) {
 		this.toiletneed = toiletneed;
 	}
-	public int getWeight() {
+	/**	 * Gets the weight.	 *	 * @return the weight	 */	public int getWeight() {
 		return weight;
 	}
-	public void setWeight(int weight) {
+	/**	 * Sets the weight.	 *	 * @param weight the new weight	 */	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	public int getSleepiness() {
+	/**	 * Gets the sleepiness.	 *	 * @return the sleepiness	 */	public int getSleepiness() {
 		return sleepiness;
 	}
-	public double getHungerweight() {
+	/**	 * Gets the hungerweight.	 *	 * @return the hungerweight	 */	public double getHungerweight() {
 		return hungerNeed;
 	}
-	public String getFavtoy() {
+	/**	 * Gets the favtoy.	 *	 * @return the favtoy	 */	public String getFavtoy() {
 		return favtoy;	}
-	public double getHungerNeed() {
+	/**	 * Gets the hunger need.	 *	 * @return the hunger need	 */	public double getHungerNeed() {
 		return hungerNeed;
 	}
-	public void setHungerNeed(double hungerNeed) {
+	/**	 * Sets the hunger need.	 *	 * @param hungerNeed the new hunger need	 */	public void setHungerNeed(double hungerNeed) {
 		this.hungerNeed = hungerNeed;
 	}
-	public int getRoughness() {
+	/**	 * Gets the roughness.	 *	 * @return the roughness	 */	public int getRoughness() {
 		return roughness;
 	}
-	public void setRoughness(int roughness) {
+	/**	 * Sets the roughness.	 *	 * @param roughness the new roughness	 */	public void setRoughness(int roughness) {
 		this.roughness = roughness;
 	}
-	public String getFavfood() {
+	/**	 * Gets the favfood.	 *	 * @return the favfood	 */	public String getFavfood() {
 		return favfood;
 	}
-	public void setFavfood(String favfood) {
+	/**	 * Sets the favfood.	 *	 * @param favfood the new favfood	 */	public void setFavfood(String favfood) {
 		this.favfood = favfood;
 	}
-	public void setPetname(String petname) {
+	/**	 * Sets the petname.	 *	 * @param petname the new petname	 */	public void setPetname(String petname) {
 		this.petname = petname;
 	}
-	public void setSleepiness(int sleepiness) {
+	/**	 * Sets the sleepiness.	 *	 * @param sleepiness the new sleepiness	 */	public void setSleepiness(int sleepiness) {
 		this.sleepiness = sleepiness;
 	}
-	public void setFavtoy(String favtoy) {
+	/**	 * Sets the favtoy.	 *	 * @param favtoy the new favtoy	 */	public void setFavtoy(String favtoy) {
 		this.favtoy = favtoy;
 	}
 }

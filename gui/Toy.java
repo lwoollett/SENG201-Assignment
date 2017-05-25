@@ -1,40 +1,40 @@
 package gui;
 
-public class Toy {
-	private String name;
-	private int price;
-	private int happiness;
-	private int durability;
-	
-	public Toy(String name, int price, int happiness){
+// TODO: Auto-generated Javadoc/** * The Class Toy. */public class Toy {
+	/** The name. */	private String name;
+	/** The price. */	private int price;
+	/** The happiness. */	private int happiness;
+	/** The durability. */	private int durability;
+
+	/**	 * 	 * Instantiates a new toy.	 * 	 *	 * 	 * @param name the name	 * 	 * @param price the price	 * 	 * @param happiness the happiness	 *	 * @param name the name	 * @param price the price	 * @param happiness the happiness	 */	public Toy(String name, int price, int happiness, int dur){
 		this.name = name;
 		this.price = price;
-		this.happiness = happiness; //Needs to be between 0-40 40 is like, giving a puppy to your girlfriend. 
-		this.durability = 100;
-	}
-	public String getName() {
+		this.happiness = happiness; //Needs to be between 0-40 40 is like, giving a puppy to your girlfriend.
+		this.durability = dur;
+	}	/* (non-Javadoc)	 * @see java.lang.Object#toString()	 */	@Override	public String toString(){		String retstring = name + " " + durability + "%";		return retstring;	}
+	/**	 * 	 * Gets the name.	 * 	 *	 * 	 * @return the name	 *	 * @return the name	 */	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	/**	 * 	 * Sets the name.	 * 	 *	 * 	 * @param name the new name	 *	 * @param name the new name	 */	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
+	/**	 * 	 * Gets the price.	 * 	 *	 * 	 * @return the price	 *	 * @return the price	 */	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	/**	 * 	 * Sets the price.	 * 	 *	 * 	 * @param price the new price	 *	 * @param price the new price	 */	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getHappiness() {
+	/**	 * 	 * Gets the happiness.	 * 	 *	 * 	 * @return the happiness	 *	 * @return the happiness	 */	public int getHappiness() {
 		return happiness;
 	}
-	public void setHappiness(int happiness) {
+	/**	 * 	 * Sets the happiness.	 * 	 *	 * 	 * @param happiness the new happiness	 *	 * @param happiness the new happiness	 */	public void setHappiness(int happiness) {
 		this.happiness = happiness;
 	}
-	public int getDurability() {
+	/**	 * 	 * Gets the durability.	 * 	 *	 * 	 * @return the durability	 *	 * @return the durability	 */	public int getDurability() {
 		return durability;
 	}
-	public void setDurability(int durability) {
+	/**	 * 	 * Sets the durability.	 * 	 *	 * 	 * @param durability the new durability	 *	 * @param durability the new durability	 */	public void setDurability(int durability) {
 		this.durability = durability;
 	}
-	
+
 }

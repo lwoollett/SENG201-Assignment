@@ -3,13 +3,30 @@ package gui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Game.
+ */
 public class Game {
+
+	/** The store. */
 	Store store = new Store();
+
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
+
+	/** The pnum. */
 	int pnum = 0;
+
+	/** The players. */
 	static ArrayList<Player> players = new ArrayList<Player>();
+
+	/** The pets. */
 	ArrayList<Pet> pets = new ArrayList<Pet>();
 
+	/**
+	 * Populatepets.
+	 */
 	private void populatepets(){
 		pets.add(new Cat("UnNamed"));
 		pets.add(new Cow("UnNamed"));
@@ -19,6 +36,13 @@ public class Game {
 		pets.add(new Velociraptor("UnNamed"));
 	}
 
+	/**
+	 * Keeps Trying for a value between two options
+	 *
+	 * @param ln the lower value
+	 * @param hn the higher value
+	 * @return the number
+	 */
 	public int getNumber(int ln, int hn){
 		System.out.println("Please Enter A Number Between " + ln + " and " + hn);
 		int num = sc.nextInt();
@@ -34,6 +58,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Gets the players.
+	 *
+	 * @return the players
+	 */
 	private void getPlayers() {
 		System.out.println("How Many Players: ");
 		pnum = getNumber(1, 3);
@@ -60,6 +89,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Gets the pets.
+	 *
+	 * @return the pets
+	 */
 	private void getPets(){
 		for(Player p : players){
 			ArrayList<Pet> currentpets = new ArrayList<Pet>();
@@ -86,6 +120,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Feed.
+	 *
+	 * @param p the p
+	 */
 	private void feed(Player p){
 		System.out.println("What pet would you like to feed?");
 		ArrayList<Food> foodlist = p.getFood();
@@ -116,6 +155,11 @@ public class Game {
 		p.setActions(p.getActions() - 1);
 	}
 
+	/**
+	 * Play.
+	 *
+	 * @param p the p
+	 */
 	private void play(Player p){
 		System.out.println("What pet would you like to play with?");
 		int c = 1;
@@ -150,6 +194,11 @@ public class Game {
 		p.setActions(p.getActions() - 1);
 	}
 
+	/**
+	 * Store trip.
+	 *
+	 * @param p the p
+	 */
 	private void storeTrip(Player p){
 		System.out.println("Welcome to the store!");
 		System.out.println("Just a reminder, you have $" + p.getMoney() + " to spend!");
@@ -211,6 +260,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * End day.
+	 *
+	 * @param p the p
+	 */
 	private void endDay(Player p){
 		p.setActions(2);
 		ArrayList<Pet> pets = p.getPets();
@@ -220,6 +274,11 @@ public class Game {
 		store.nextDay();
 	}
 
+	/**
+	 * Day loop.
+	 *
+	 * @param p the p
+	 */
 	private void dayLoop(Player p){
 		//Loop for every day.
 		System.out.println("*******************");
@@ -268,6 +327,11 @@ public class Game {
 		endDay(p);
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args){
 		System.out.println("Game Started");
 		Game game = new Game();
