@@ -36,7 +36,7 @@ public class Pet {
 		retstring += "Favourite Toy: " + favtoy + "\n";
 		retstring += "Favourite Food: " + favfood + "\n";		return retstring;
 	}
-/*  *Pet Status Updaters */
+	/*	 *Pet Status Updaters	 */
 	public void feed(Food food){
 		double io = food.getNutrion() * hungerNeed;
 		hunger += io;
@@ -58,7 +58,7 @@ public class Pet {
 	public void nextDay(){
 		hunger -= 5 * hungerNeed;
 		tiredness -= 5 * sleepiness;
-		toiletneed -= 20;
+		toiletneed -= 20;
 	}
 	/*
 	 * Getters And Setters

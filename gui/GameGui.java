@@ -133,7 +133,18 @@ public class GameGUI {
 					if(val == -1 && players.get(i-1).getPets().size() == 0){
 						val = 0;
 					}else if(val != -1){
-						ppets.add(pets.get(val));
+						Pet p = pets.get(val);
+						String petname = (String)JOptionPane.showInputDialog(
+								frmVirtualPets,
+								"Name your new " + retPet,
+								"Pet Naming",
+								JOptionPane.PLAIN_MESSAGE,
+								null, //Icon
+								null, //To use a list or just text box
+								""
+								);
+						p.setPetname(petname);
+						ppets.add(p);
 						players.get(i-1).setPets(ppets);
 					}
 				}
