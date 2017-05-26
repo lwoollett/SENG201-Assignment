@@ -35,7 +35,7 @@ public class Food {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString(){
+	public String toString(){ //For inventory display
 		String retstring;
 		retstring = name + " " + nutrition;
 		return retstring;
@@ -99,6 +99,7 @@ public class Food {
 
 	/**
 	 * Sets the value.
+	 * We can't have food that gives you money
 	 *
 	 * @param v the new value in $$
 	 */
@@ -111,6 +112,7 @@ public class Food {
 
 	/**
 	 * Sets the nutrion.
+	 * We cant have things that give more than 100 or take away
 	 *
 	 * @param v the new nutrion
 	 */
@@ -131,7 +133,7 @@ public class Food {
 	public void setTastiness(int v){
 		tastiness = v;
 		if(tastiness < 0){
-			tastiness = 0;
+			tastiness = 0; //As per
 		}else if(tastiness > 100){
 			tastiness = 100;
 		}
@@ -144,7 +146,7 @@ public class Food {
 	 */
 	public void setMeal(int v){
 		mealsize = v;
-		if(mealsize < 0){
+		if(mealsize < 0){ //As per
 			mealsize = 0;
 		}else if(mealsize > 4){
 			mealsize = 4;

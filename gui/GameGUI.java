@@ -19,36 +19,18 @@ import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
 
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class GameGUI.
+ * Main Class of the game GUI
  */
 public class GameGUI {
-
-	/** The rand. */
-	Random rand = new Random();
-
-	/**  The store. */
+	Random rand = new Random(); //Random for random events
 	public static Store store = new Store();
-
-	/** The Number of players. */
-	int pnum = 0;
-
-	/** The maxdays. */
+	int pnum = 0; //Number of players
 	int maxdays = 0;
-	/** The day. */
 	int day = 1;
-
-	/** The current player. */
-	Player currplayer;
-
-	/** The pcounter. */
-	public static int pcounter = 0;
-
-	/** The players. */
+	Player currplayer; //Current player
+	public static int pcounter = 0; //Player counter
 	public static ArrayList<Player> players = new ArrayList<>();
-
-	/** The pets. */
 	ArrayList<Pet> pets = new ArrayList<>();
 
 	/**
@@ -63,13 +45,12 @@ public class GameGUI {
 		pets.add(new Velociraptor("UnNamed"));
 	}
 
-	/** The frm virtual pets. */
-	private JFrame frmVirtualPets;
+	private JFrame frmVirtualPets; //Main frame
 
 	/**
 	 * Launch the application.
 	 *
-	 * @param args the arguments
+	 * @param args Args arent used
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -89,7 +70,7 @@ public class GameGUI {
 	 * Create the application.
 	 */
 	public GameGUI() {
-		populatepets();
+		populatepets(); //Put some pets in the pets array
 		playgame();
 	}
 
@@ -98,7 +79,6 @@ public class GameGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void playgame() {
-
 		frmVirtualPets = new JFrame();
 		frmVirtualPets.setTitle("Virtual Pets");
 		frmVirtualPets.setBounds(100, 100, 653, 549);
@@ -106,20 +86,21 @@ public class GameGUI {
 		frmVirtualPets.getContentPane().setLayout(null);
 
 
-		Object[] options = {"1", //Selection options for the popup
-				"2",
-		"3"};
+		Object[] options = {"1", "2", "3"}; //Selection options for the popup
 
-		while(pnum == 0){
-			pnum = 1 + JOptionPane.showOptionDialog(frmVirtualPets, "Please Select The Number Of Players", "Select # Of Players",
-					JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.QUESTION_MESSAGE,
-					null,
-					options,
+		while(pnum == 0){ //Keep looping so we get a actual number
+			pnum = 1 + JOptionPane.showOptionDialog(frmVirtualPets,
+					"Please Select The Number Of Players", //Label
+					"Select # Of Players", //Window label
+					JOptionPane.YES_NO_CANCEL_OPTION, //Type of optionpane
+					JOptionPane.QUESTION_MESSAGE, //
+					null, //To use a custom image or not
+					options, //Options for buttons
 					options[2]);
 		}
 
-		while(maxdays == 0){
+
+		while(maxdays == 0){ //Same thing for getting the number of days.
 			String daystr = (String)JOptionPane.showInputDialog(
 					frmVirtualPets,
 					"How Many Days?",
@@ -127,9 +108,9 @@ public class GameGUI {
 					JOptionPane.PLAIN_MESSAGE,
 					null, //Icon
 					null, //To use a list or just text box
-					"29"
+					"29" //Default value
 					);
-			try{
+			try{ //This is purely to convert a text box into a int
 				maxdays = Integer.parseInt(daystr);
 			}catch(Exception e){
 				//User has entered something thats not a int. thats cool, we'll just loop again
@@ -140,11 +121,12 @@ public class GameGUI {
 		//Counter for player, then pets.
 		//The fuck is this spaghetti code??
 		//TODO Make into actual code
-		Object[] petobjects = {"Cat", "Cow", "Dog", "Rabbit", "Rat", "Velociraptor"};
-		ArrayList<String> petstrings = new ArrayList<>();
+
+		Object[] petobjects = {"Cat", "Cow", "Dog", "Rabbit", "Rat", "Velociraptor"}; //Need a object array to put into dialougbox
+		ArrayList<String> petstrings = new ArrayList<>(); //The strings for the objects
 		petstrings.add("Cat");petstrings.add("Cow");petstrings.add("Dog");petstrings.add("Rabbit");petstrings.add("Rat");petstrings.add("Velociraptor");
 
-		for(int i = 1; i < pnum + 1; i++){
+		for(int i = 1; i < pnum + 1; i++){ //Getting player name
 			String playername = (String)JOptionPane.showInputDialog(
 					frmVirtualPets,
 					"What is player " + i + "'s name?",
@@ -155,18 +137,18 @@ public class GameGUI {
 					"Player " + i
 					);
 
-			boolean playerdouble = false;
+			boolean playerdouble = false; //If player is a double up
 			for(Player p: players){
 				if(playername.equals(p.getName())){
 					i--;
 					playerdouble = true;
-					JOptionPane.showMessageDialog(frmVirtualPets, "You cannot enter a duplicate name.");
+					JOptionPane.showMessageDialog(frmVirtualPets, "You cannot enter a duplicate name."); //Simple popup
 				}
 			}
-			if(playerdouble == false){
-				players.add(new Player(playername));
-				int val = 0;
-				while(val != -1 && players.get(i-1).getPets().size() != 3){
+			if(playerdouble == false){ //Else if it isnt a double up
+				players.add(new Player(playername)); //Add the player
+				int val = 0; //Number of pets currently added to the player
+				while(val != -1 && players.get(i-1).getPets().size() != 3){ //While the box isnt in a exited state and the player has less than 4 pets...
 					String retPet = (String)JOptionPane.showInputDialog(
 							frmVirtualPets,
 							"Select Cancel To Stop Adding Pets",
@@ -177,12 +159,12 @@ public class GameGUI {
 							petobjects[0]);
 
 
-					val = petstrings.indexOf(retPet);
+					val = petstrings.indexOf(retPet); //Get the index of the selected pet
 					ArrayList<Pet> ppets = players.get(i-1).getPets();
 					if(val == -1 && players.get(i-1).getPets().size() == 0){
 						val = 0;
 					}else if(val != -1){
-						boolean petdouble = true;
+						boolean petdouble = true; //Checking for pet name double ups
 						while(petdouble){
 							Pet p = pets.get(val);
 							String petname = (String)JOptionPane.showInputDialog(
@@ -195,7 +177,7 @@ public class GameGUI {
 									""
 									);
 
-							petdouble = false;
+							petdouble = false; //Double up checking. Apparently == does not work with strings.
 							for(Pet pet:ppets){
 								if(pet.getPetname().equals(petname)){
 									petdouble = true;
@@ -221,13 +203,6 @@ public class GameGUI {
 			}
 		}
 		//Create our panels
-		JPanel action_panel = new JPanel();
-		action_panel.setBounds(112, 0, 520, 510);
-		action_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		frmVirtualPets.getContentPane().add(action_panel);
-
-		action_panel.setVisible(false);
-
 		JPanel nav_panel = new JPanel();
 		nav_panel.setBounds(0, 0, 113, 255);
 		nav_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -261,7 +236,7 @@ public class GameGUI {
 		frmVirtualPets.getContentPane().add(inventory_panel);
 
 
-		//Text Panes and shit.
+		//Text Panes for pet status.
 		//Pretty much the displays for everything
 		JTextPane pet1_text = new JTextPane();
 		pet1_panel.add(pet1_text);
@@ -287,12 +262,13 @@ public class GameGUI {
 		JLabel lblDaysPassed = new JLabel("Days Passed");
 		status_panel.add(lblDaysPassed);
 
+
+		//Player inventory lists
 		DefaultListModel<String> toys_model = new DefaultListModel<>();
 		toys_model.addElement("Toy: Durability");
 
 		DefaultListModel<String> food_model = new DefaultListModel<>();
 		food_model.addElement("Food: Nutrition");
-
 
 		JList<String> list_toys = new JList<>(toys_model);
 		inventory_panel.add(list_toys);
@@ -300,49 +276,56 @@ public class GameGUI {
 		JList<String> list_food = new JList<>(food_model);
 		inventory_panel.add(list_food);
 
+
+		//Feeding the pets
 		JButton btnFeed = new JButton("Feed");
 		btnFeed.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if(currplayer.getFood().size() == 0){
+				if(currplayer.getFood().size() == 0){ //If player has no food
 					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " has no food.");
-				}else if(currplayer.getActions() == 0){
+				}else if(currplayer.getActions() == 0){ //Or if player has no actions left
 					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
 					ArrayList<Food> foods = currplayer.getFood();
 
-					JComboBox<String> selectedPet = new JComboBox<>();
-					for(Pet p:currplayer.getPets()){
-						if(p.isAlive()){
+					JComboBox<String> selectedPet = new JComboBox<>(); //Combo box for selecting pets
+					for(Pet p:pets){
+						if(p.isAlive()){ //We dont want to feed a dead pet, what a waste of good food.
 							selectedPet.addItem(p.getPetname());
-						}
+						} //Iterate through all the players pets and put them in the combobox
 					}
 
 					JComboBox<String> selectedFood = new JComboBox<>();
-					for(Food f:currplayer.getFood()){
+					for(Food f:foods){
 						selectedFood.addItem(f.getName());
-					}
+					}//Same thing for food.
+
 					final JComponent[] things = new JComponent[] {
 							new JLabel("Pet To Feed"),
 							selectedPet,
 							new JLabel("Food To Use"),
 							selectedFood
-					};
+					}; //This is a array for the components of the dialogbox
 
-					int result = JOptionPane.showConfirmDialog(null, things, "Feed Pets", JOptionPane.PLAIN_MESSAGE);
-					if (result == JOptionPane.OK_OPTION) {
+					int result = JOptionPane.showConfirmDialog(null, things, "Feed Pets", JOptionPane.PLAIN_MESSAGE); //Show the pane
+					if (result == JOptionPane.OK_OPTION) { //If the player clicked ok
+
+						//get selected pet and food, and then feed the pet
 						Pet setPet = pets.get(selectedPet.getSelectedIndex());
 						Food setFood = foods.get(selectedFood.getSelectedIndex());
 						setPet.feed(setFood);
 						foods.remove(setFood);
+						//Update the player's inventory
 						currplayer.setFood(foods);
-
 						currplayer.setActions(currplayer.getActions() - 1);
+
+						//Update the label
 						lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 
 
-
+						//Update the pet text
 						pet1_text.setText(currplayer.getPets().get(0).printStatus());
 						try{
 							pet2_text.setText(currplayer.getPets().get(1).printStatus());
@@ -355,6 +338,8 @@ public class GameGUI {
 							pet3_text.setText("No Third Pet");
 						}
 
+
+						//Update the inventory panel
 						food_model.clear();
 						food_model.addElement("Food: Nutrition");
 						for(Food f:foods){
@@ -371,14 +356,19 @@ public class GameGUI {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				boolean running = true;
-				while(running){
+				while(running){ //So that we can meet the requirement " Be able to purchase multiple objects at a time without leaving the store. "
 					ArrayList<Food> foods = store.getFoods();
 					int c = 0;
 					JComboBox<String> selectedFood = new JComboBox<>();
 					for(Food f: foods){
-						selectedFood.addItem(f.getName() + ": $" + f.getValue() + " Stock: " + store.getFoodamounts()[c]
-								+ " Nutrition: " + f.getNutrition() + " Meal Size: " + f.getMeal());
-						c++;
+						if(store.getFoodamounts()[c] < 1){
+							//Nope, food is out of stock
+						}else{
+							//Add the food
+							selectedFood.addItem(f.getName() + ": $" + f.getValue() + " Stock: " + store.getFoodamounts()[c]
+									+ " Nutrition: " + f.getNutrition() + " Meal Size: " + f.getMeal());
+							c++;
+						}
 					}
 					final JComponent[] things = new JComponent[] {
 							new JLabel("Food To Buy:"),
@@ -387,20 +377,27 @@ public class GameGUI {
 					int result = JOptionPane.showConfirmDialog(null, things, "Player Has $" + currplayer.getMoney(), JOptionPane.OK_CANCEL_OPTION);
 					if (result == JOptionPane.OK_OPTION) {
 						int foodindex = selectedFood.getSelectedIndex();
-						if(currplayer.getMoney() >= foods.get(foodindex).getValue()){
+						if(currplayer.getMoney() >= foods.get(foodindex).getValue()){ //Check if the player has enough money
 							ArrayList<Food> prevfood = currplayer.getFood();
 							prevfood.add(foods.get(foodindex));
-							currplayer.setMoney(currplayer.getMoney() - foods.get(foodindex).getValue());
+							currplayer.setMoney(currplayer.getMoney() - foods.get(foodindex).getValue()); //Set the players money
 							currplayer.setFood(prevfood);
 
-							lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
+							int[] amounts = store.getFoodamounts();
+							amounts[foodindex] = amounts[foodindex] - 1; //Remove one from the store inv
+							store.setFoodamounts(amounts);
 
-							food_model.clear();
+							lblPlayerMoney.setText("Money: $" + currplayer.getMoney()); //Sets the label for player money
+
+							food_model.clear(); //Sets the inventory display
 							food_model.addElement("Food: Nutrition");
 							for(Food f:prevfood){
 								food_model.addElement(f.toString());
 							}
 
+						}else{
+							//Shows error message if player could not afford
+							JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " does not  have enough money to purchase that.");
 						}
 					}
 					else if(result == JOptionPane.CLOSED_OPTION || result == JOptionPane.CANCEL_OPTION){
@@ -422,9 +419,13 @@ public class GameGUI {
 					JComboBox<String> selectedToy = new JComboBox<>();
 					int c = 0;
 					for(Toy t : toys){
-						selectedToy.addItem(t.getName() + ": $" + t.getPrice() + " Stock: " + store.getToyamounts()[c] +
-								" Happiness: " + t.getHappiness() + " Base Durability: " + t.getDurability());
-						c++;
+						if(store.getToyamounts()[c] < 1){
+							//Nope, food is out of stock
+						}else{
+							selectedToy.addItem(t.getName() + ": $" + t.getPrice() + " Stock: " + store.getToyamounts()[c] +
+									" Happiness: " + t.getHappiness() + " Base Durability: " + t.getDurability());
+							c++;
+						}
 					}
 					final JComponent[] things = new JComponent[] {
 							new JLabel("Toy To Buy:"),
@@ -441,11 +442,18 @@ public class GameGUI {
 
 							lblPlayerMoney.setText("Money: $" + currplayer.getMoney());
 
+							int[] amounts = store.getToyamounts();
+							amounts[toyindex] = amounts[toyindex] - 1; //Remove one from the store inv
+							store.setFoodamounts(amounts);
+
 							toys_model.clear();
 							toys_model.addElement("Toy: Durability");
 							for(Toy t: prevtoys){
 								toys_model.addElement(t.toString());
 							}
+						}else{
+							//Shows error message if player could not afford
+							JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " does not  have enough money to purchase that.");
 						}
 					}
 					else if(result == JOptionPane.CLOSED_OPTION || result == JOptionPane.CANCEL_OPTION){
@@ -457,7 +465,7 @@ public class GameGUI {
 		nav_panel.add(btnToyStore);
 
 		JButton btnPlay = new JButton("Play");
-		btnPlay.addMouseListener(new MouseAdapter() {
+		btnPlay.addMouseListener(new MouseAdapter() { //Play with a pet and a toy
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if(currplayer.getToys().size() == 0){
@@ -471,7 +479,7 @@ public class GameGUI {
 					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
-							selectedPet.addItem(p.getPetname());
+							selectedPet.addItem(p.getPetname()); //Only add the pet to the combo box if they're alive
 						}
 					}
 
@@ -485,7 +493,7 @@ public class GameGUI {
 							new JLabel("Toy To Use"),
 							selectedToy
 					};
-
+					//All this is practially identical to the food
 					int result = JOptionPane.showConfirmDialog(null, things, "Play With Pet", JOptionPane.PLAIN_MESSAGE);
 					if (result == JOptionPane.OK_OPTION) {
 						Pet setPet = pets.get(selectedPet.getSelectedIndex());
@@ -515,7 +523,7 @@ public class GameGUI {
 							pet3_text.setText("No Third Pet");
 						}
 
-						currplayer.setToys(toys);
+						currplayer.setToys(toys); //Update the inventory display
 						toys_model.clear();
 						toys_model.addElement("Toy: Durability");
 						for(Toy t: toys){
@@ -532,28 +540,30 @@ public class GameGUI {
 		btnGoToilet.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if(currplayer.getActions() == 0){
+				if(currplayer.getActions() == 0){ //Always check player actions
 					JOptionPane.showMessageDialog(frmVirtualPets, "Player " + currplayer.getName() + " is out of actions.");
 				}else{
 					ArrayList<Pet> pets = currplayer.getPets();
 					JComboBox<String> selectedPet = new JComboBox<>();
 					for(Pet p:currplayer.getPets()){
 						if(p.isAlive()){
-							selectedPet.addItem(p.getPetname());
+							selectedPet.addItem(p.getPetname()); //Pet's gotta be alive
 						}
 					}
 
 					final JComponent[] things = new JComponent[] {
 							new JLabel("Pet To Send To Toilet:"),
-							selectedPet
+							selectedPet //Wow a array that contains components :O
 					};
 
 					int result = JOptionPane.showConfirmDialog(null, things, "Sending Pet To Toilet", JOptionPane.PLAIN_MESSAGE);
 					if (result == JOptionPane.OK_OPTION) {
 						Pet setPet = pets.get(selectedPet.getSelectedIndex());
-						setPet.goToToilet();
+						setPet.goToToilet(); //Send the pet to the toilet
 					}
 
+
+					//Update the pet displays
 					currplayer.setActions(currplayer.getActions() - 1);
 					lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 					pet1_text.setText(currplayer.getPets().get(0).printStatus());
@@ -595,9 +605,10 @@ public class GameGUI {
 					int result = JOptionPane.showConfirmDialog(null, things, "Sending Pet To Sleep", JOptionPane.PLAIN_MESSAGE);
 					if (result == JOptionPane.OK_OPTION) {
 						Pet setPet = pets.get(selectedPet.getSelectedIndex());
-						setPet.sleep();
+						setPet.sleep(); //Send the pet to sleep
 					}
 
+					//Update the pet displays
 					currplayer.setActions(currplayer.getActions() - 1);
 					lblActionsLeftFor.setText("Actions Left: " + currplayer.getActions());
 					pet1_text.setText(currplayer.getPets().get(0).printStatus());
@@ -617,7 +628,7 @@ public class GameGUI {
 		nav_panel.add(btnSleep);
 
 		JButton btnHelp = new JButton("Help");
-		btnHelp.addMouseListener(new MouseAdapter() {
+		btnHelp.addMouseListener(new MouseAdapter() { //Literally a display box that shows a wall of text
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				String helpstring = " Players can now choose from several options for their pets on the left side of the screen.\n"
@@ -633,20 +644,22 @@ public class GameGUI {
 
 
 		JButton btnEndDay = new JButton("End Day");
-		btnEndDay.addMouseListener(new MouseAdapter() {
+		btnEndDay.addMouseListener(new MouseAdapter() { //oh boy the end day loop!
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if(day == maxdays && pcounter == players.size()-1){
+				if(day == maxdays && pcounter == players.size()-1){ //if the game is actually over
 					String gamestring = "Game Over. Player Scores:\n";
 					for(Player p:players){
-						gamestring += "\n Player: " + p.getName() + "'s Score: " + p.getScore();
-					}
+						p.nextDay(); //Make sure the player gets their last day of score
+						gamestring += "\n Player: " + p.getName() + "'s Score: " + p.getScore(); //Add players to a string
+					} //Put it in a dialog yay.
 					JOptionPane.showMessageDialog(frmVirtualPets, gamestring);
+					frmVirtualPets.dispose(); //GOODBYE WORLD
 				}
 
 				pcounter += 1;
-				int n = rand.nextInt(100) + 1;
-				if(n == 13 || n == 99){
+				int n = rand.nextInt(100) + 1; //Random events
+				if(n == 13 || n == 99){ // 2/100 chance
 					ArrayList<Pet> pets = currplayer.getPets();
 					int index = rand.nextInt(pets.size());
 					Pet randompet = pets.get(index);
@@ -656,22 +669,23 @@ public class GameGUI {
 					if(result == JOptionPane.OK_OPTION){
 						randompet.setMood(randompet.getMood() - 2);
 					}else{
-						randompet.setRoughness(rand.nextInt(100) + 1);
-						randompet.setTiredness(rand.nextInt(10) + 1);
-						randompet.setSleepiness(rand.nextInt(10) + 1);
+						randompet.setRoughness(rand.nextInt(100) + 50); //Screw up the pet majorly
+						randompet.setTiredness(rand.nextInt(10) + 5); //Small chance to be a bonus
+						randompet.setSleepiness(rand.nextInt(10) + 5);
 						randompet.setMood(4);
 					}
 					pets.set(index, randompet);
-				}else if(n == 63){
+				}else if(n == 63){ //1/100 chance
 					ArrayList<Pet> pets = currplayer.getPets();
 					int index = rand.nextInt(pets.size());
 					Pet randompet = pets.get(index);
 					int result = JOptionPane.showConfirmDialog(null, "Uh oh, " + randompet.getPetname() +
 							" has fallen sick.\n Click ok to pay $200 to send the pet to get treatment. " +
 							"Player Has $" + currplayer.getMoney(), "Random Event", JOptionPane.OK_CANCEL_OPTION);
-					if(result == JOptionPane.OK_OPTION){
+					if(result == JOptionPane.OK_OPTION){ //Money exortion
 						if(currplayer.getMoney() - 200 < 0){
-							JOptionPane.showMessageDialog(frmVirtualPets, "Not enough money to purchase this.");
+							JOptionPane.showMessageDialog(frmVirtualPets, "Not enough money to purchase this."); //Rest in peace
+							randompet.setSickness(true);
 						}else{
 							currplayer.setMoney(currplayer.getMoney() - 200);
 							randompet.setMood(randompet.getMood() + 1);
@@ -680,17 +694,18 @@ public class GameGUI {
 						randompet.setSickness(true);
 					}
 					pets.set(index, randompet);
-				}else if(n == 22){
+				}else if(n == 22){ //Yay a good thing happening, like being done with this assignment!
 					currplayer.setScore(currplayer.getScore() + 1000);
 					JOptionPane.showMessageDialog(frmVirtualPets, "Congratulations, you've got some free score.");
 				}
-				if(pcounter > players.size()-1){
+				if(pcounter > players.size()-1){ //If everyone has completed the day
 					pcounter = 0;
 					store.nextDay();
 					for(Player p:players){
 						p.nextDay();
-					}
-					day += 1;
+					} //Do the nextday for each person and the store
+					day += 1; //Add a day
+					//Set labels and shit
 					lblDaysPassed.setText("Day: " + day);
 					lblPlayerScore.setText("Score: " + currplayer.getScore());
 					currplayer = players.get(pcounter);
@@ -732,7 +747,7 @@ public class GameGUI {
 		nav_panel.add(btnEndDay);
 
 
-
+		//Initial Label filling
 		currplayer = players.get(pcounter);
 		lblPlayerName.setText("Player: " + currplayer.getName());
 		lblPlayerMoney.setText("Money: $" + currplayer.getMoney());

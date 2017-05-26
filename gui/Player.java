@@ -30,7 +30,7 @@ public class Player {
 	 */
 	public void nextDay(){
 		actions = 2;
-		money += 10;
+		money += 100;
 		for(Pet pet: pets){
 			pet.nextDay();
 			score += pet.retScore();

@@ -28,7 +28,7 @@ public class Store{
 		//Foods Name, price, nutrition, taste, size
 		foods.add(new Food("Dog Food", 20, 30, 10, 2));
 		foods.add(new Food("Cat Food", 20, 30, 10, 2));
-		foods.add(new Food("Human", 500, 50, 0, 3));
+		foods.add(new Food("Human", 150, 50, 0, 3));
 		foods.add(new Food("Carrot", 5, 30, 10, 1));
 		foods.add(new Food("Pellets", 30, 20, 10, 1));
 		foods.add(new Food("Grass", 100, 30, 10, 1));
