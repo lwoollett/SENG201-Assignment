@@ -178,22 +178,25 @@ public class GameGUI {
 									);
 
 							petdouble = false; //Double up checking. Apparently == does not work with strings.
-							for(Pet pet:ppets){
-								if(pet.getPetname().equals(petname)){
-									petdouble = true;
-									JOptionPane.showMessageDialog(frmVirtualPets, "You cannot enter a duplicate name.");
+							if(petname == null){
+								petdouble = true;
+							}else{
+								for(Pet pet:ppets){
+									if(pet.getPetname().equals(petname)){
+										petdouble = true;
+										JOptionPane.showMessageDialog(frmVirtualPets, "You cannot enter a duplicate name.");
+									}
+								}
+								if(petdouble == false){
+									if(petname.equals(null)){
+										p.setPetname("UnNamed Pet");
+									}else{
+										p.setPetname(petname);
+									}
+									ppets.add(p);
+									players.get(i-1).setPets(ppets);
 								}
 							}
-							if(petdouble == false){
-								if(petname.equals(null)){
-									p.setPetname("UnNamed Pet");
-								}else{
-									p.setPetname(petname);
-								}
-								ppets.add(p);
-								players.get(i-1).setPets(ppets);
-							}
-
 							/*TODO:
 							 * Fix bug with null pet names and iteration
 							 */
